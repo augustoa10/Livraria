@@ -1,0 +1,48 @@
+package br.com.ifsp.livraria.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Livro {
+
+	//Todos os usuários
+	private Integer isbn;
+	private String titulo;
+	private String dataDePublicacao; //String ou Date?
+	private Editora editora;
+	private String categoria; //Enum??? ou Uma classe categoria mesmo
+	private double precoDeVenda;
+	private String resumo;
+	private String indice; //capítulos todos numerados
+	
+	private final List<Autor> autores = new ArrayList<Autor>(); 
+	
+	//Somente usuários internos
+	private double precoDeCusto;
+	private double margemDeLucro;
+	
+	//Construtor - todos exceto autores
+	public Livro(Integer isbn, String titulo, String dataDePublicacao,
+			Editora editora, String categoria, double precoDeVenda,
+			String resumo, String indice, double precoDeCusto,
+			double margemDeLucro) {
+		
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.dataDePublicacao = dataDePublicacao;
+		this.editora = editora;
+		this.categoria = categoria;
+		this.precoDeVenda = precoDeVenda;
+		this.resumo = resumo;
+		this.indice = indice;
+		this.precoDeCusto = precoDeCusto;
+		this.margemDeLucro = margemDeLucro;
+		
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,11 @@
+package br.com.ifsp.livraria.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Livro {
+	Integer isbn;
+	String titulo;
+	
+	List<Autor> Autores = new ArrayList<Autor>(); 
+}
