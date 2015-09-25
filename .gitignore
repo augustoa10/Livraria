@@ -1,6 +1,6 @@
 *.class
 .metadata
-.recomenders
+.recommenders
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
