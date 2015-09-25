@@ -1,0 +1,5 @@
+package br.ifsp.livraria.bd;
+
+public interface ClienteDao {
+
+}

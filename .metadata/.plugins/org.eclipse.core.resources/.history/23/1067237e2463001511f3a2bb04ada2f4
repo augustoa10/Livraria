@@ -1,0 +1,35 @@
+package br.ifsp.livraria.bd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class JDBCClienteDao {
+
+
+		try{
+			Connection conexao = ConnectionFactory.createConnection();
+			
+			String sql = "insert into Editora (nome,endereco,telefone,cnpj) values (?,?,?,?)";
+			PreparedStatement comando = conexao.prepareStatement(sql);
+			
+			Cliente cliente = new Cliente();
+			comando.setString(1, cliente.getNomeEditora());
+			comando.setString(2, cliente.getEndereco());
+			comando.setString(3, cliente.getTelefone());
+			comando.setString(4, cliente.getCnpj());
+			comando.setString(5, cliente.getCnpj());
+			comando.setString(6, cliente.getCnpj());
+			comando.setString(7, cliente.getCnpj());
+			comando.setString(8, cliente.getCnpj());
+			comando.setString(9, cliente.getCnpj());
+			comando.setString(10, cliente.getCnpj());
+			
+			comando.execute();
+			comando.close();
+			conexao.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}	
+	
+}
