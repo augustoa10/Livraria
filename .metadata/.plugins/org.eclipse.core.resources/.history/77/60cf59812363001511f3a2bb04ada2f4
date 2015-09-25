@@ -1,5 +1,0 @@
-package br.ifsp.livraria.bd;
-
-public class JDBCClienteDao {
-
-}
