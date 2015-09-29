@@ -7,7 +7,7 @@ public class ConnectionFactory {
 	
 public static Connection createConnection(){
 		
-		String stringConexao = "jdbc:mysql://localhost:3306/biblioteca";
+		String stringConexao = "jdbc:mysql://localhost:3306/livraria";
 		String usuario = "root";
 		String senha = "root"; 
 		
