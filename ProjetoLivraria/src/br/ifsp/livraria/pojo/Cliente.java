@@ -6,6 +6,7 @@ public class Cliente {
 		private String sobreNome;
 		private String email;
 		private String senha;
+		private String confirmaSenha;
 		private String cpf;
 		private String sexo;
 		private String dataNascimento;
@@ -36,6 +37,12 @@ public class Cliente {
 		public void setSenha(String senha) {
 			this.senha = senha;
 		}
+		public String getConfirmaSenha() {
+			return confirmaSenha;
+		}
+		public void setConfirmaSenha(String confirmaSenha) {
+			this.confirmaSenha = confirmaSenha;
+		}
 		public String getCpf() {
 			return cpf;
 		}
@@ -65,15 +72,6 @@ public class Cliente {
 		}
 		public void setEndereco(String endereco) {
 			this.endereco = endereco;
-		}
-	
-		public void validarSenha(String confirmaSenha){
-			if (confirmaSenha.equals(senha)){
-				System.out.println("Senha confirmada");
-			}
-			else{
-				System.out.println("Senha incorreta");
-			}
 		}
 		
 }
