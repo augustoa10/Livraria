@@ -73,14 +73,17 @@ public class CadastrarEditoraUI {
 					if(txtNome.getText().isEmpty() || txtEndereco.getText().isEmpty() || txtTelefone.getText().isEmpty() ||txtCNPJ.getText().isEmpty()){
 						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");
 					}
-					
-					editora.setNomeEditora(txtNome.getText());
-					editora.setEndereco(txtEndereco.getText());
-					editora.setTelefone(txtTelefone.getText());
-					editora.setCnpj(txtCNPJ.getText());
-					
-					JOptionPane.showMessageDialog(null,"Editora cadastrada com sucesso!");
-					frameCadEditora.dispose();
+					else{
+						editora.setNomeEditora(txtNome.getText());
+						editora.setEndereco(txtEndereco.getText());
+						editora.setTelefone(txtTelefone.getText());
+						editora.setCnpj(txtCNPJ.getText());
+						
+						ed.cadastrarEditora(editora);
+						
+						JOptionPane.showMessageDialog(null,"Editora cadastrada com sucesso!");
+						frameCadEditora.dispose();
+					}
 				}
 				catch (Exception e1) {
 					JOptionPane.showMessageDialog(null, "Dados Inválidos. Não foi possível cadastrar a Editora!");

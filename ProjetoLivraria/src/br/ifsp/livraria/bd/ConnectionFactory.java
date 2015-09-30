@@ -9,7 +9,7 @@ public static Connection createConnection(){
 		
 		String stringConexao = "jdbc:mysql://localhost:3306/livraria";
 		String usuario = "root";
-		String senha = "root"; 
+		String senha = ""; 
 		
 		Connection conexao = null;
 		
