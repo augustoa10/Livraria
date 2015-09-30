@@ -113,24 +113,34 @@ public class CadastrarClienteUI {
 						Cliente Cliente = new Cliente();
 						
 						try{
+							if (txtConfirmaSenha == txtSenha){
+								System.out.println("Senha correta");
+							}
+							else {
+								System.out.println("Confirme a senha novamente");
+								txtConfirmaSenha.setText("");
+							}
 							
 							if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() ||txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() || txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEndereco.getText().isEmpty()){
 								JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");
 							}
 							
-							Cliente.setNome(txtNome.getText());
-							Cliente.setSobrenome(txtSobrenome.getText());
-							Cliente.setEmail(txtEmail.getText());
-							Cliente.setSenha(txtSenha.getText());
-							Cliente.setConfirmaSenha(txtConfirmaSenha.getText());
-							Cliente.setCpf(txtCpf.getText());
-							Cliente.setSexo(txtSexo.getText());
-							Cliente.setDataNascimento(txtData.getText());
-							Cliente.setTelefone(txtTelefone.getText());
-							Cliente.setEndereco(txtEndereco.getText());
+							else {
+								Cliente.setNome(txtNome.getText());
+								Cliente.setSobrenome(txtSobrenome.getText());
+								Cliente.setEmail(txtEmail.getText());
+								Cliente.setSenha(txtSenha.getText());
+								Cliente.setConfirmaSenha(txtConfirmaSenha.getText());
+								Cliente.setCpf(txtCpf.getText());
+								Cliente.setSexo(txtSexo.getText());
+								Cliente.setDataNascimento(txtData.getText());
+								Cliente.setTelefone(txtTelefone.getText());
+								Cliente.setEndereco(txtEndereco.getText());
 							
-							JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso!");
-							frameCadCliente.dispose();
+								
+								JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso!");
+								frameCadCliente.dispose();
+							}
 						}
 						catch (Exception e1) {
 							JOptionPane.showMessageDialog(null, "Dados Inválidos. Não foi possível cadastrar o Cliente!");
