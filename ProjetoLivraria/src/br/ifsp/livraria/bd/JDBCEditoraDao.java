@@ -7,7 +7,7 @@ import br.ifsp.livraria.pojo.Editora;
 
 public class JDBCEditoraDao implements EditoraDao{
 
-	public void cadastrarEditora(){
+	public void cadastrarEditora(Editora editora){
 		
 		try{
 			Connection conexao = ConnectionFactory.createConnection();
@@ -15,7 +15,6 @@ public class JDBCEditoraDao implements EditoraDao{
 			String sql = "insert into Editora (nome,endereco,telefone,cnpj) values (?,?,?,?)";
 			PreparedStatement comando = conexao.prepareStatement(sql);
 			
-			Editora editora = new Editora();
 			comando.setString(1, editora.getNomeEditora());
 			comando.setString(2, editora.getEndereco());
 			comando.setString(3, editora.getTelefone());

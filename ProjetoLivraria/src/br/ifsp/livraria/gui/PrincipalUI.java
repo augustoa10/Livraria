@@ -34,7 +34,7 @@ public class PrincipalUI {
 		JMenuItem menuItemLivros = new JMenuItem("Livros");
 		menuItemLivros.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				new CadastrarLivroUI();		
+				//new CadastrarLivroUI();		
 			}	
 		});
 		menuCadastro.add(menuItemLivros);
@@ -44,7 +44,7 @@ public class PrincipalUI {
 		JMenuItem menuItemAutor = new JMenuItem("Autores");
 		menuItemAutor.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				new CadastrarAutorUI();		
+				//new CadastrarAutorUI();		
 			}	
 		});
 		menuCadastro.add(menuItemAutor);
@@ -64,7 +64,7 @@ public class PrincipalUI {
 		JMenuItem menuItemCliente = new JMenuItem("Clientes");
 		menuItemCliente.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				new CadastrarClienteUI();		
+				//new CadastrarClienteUI();		
 			}	
 		});
 		menuCadastro.add(menuItemCliente);
