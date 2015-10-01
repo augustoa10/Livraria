@@ -21,15 +21,15 @@ public class PrincipalUI {
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		
-		// Criação da barra de menu
+		// Criaï¿½ï¿½o da barra de menu
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));	
 		
-		// Criação de Menus
+		// Criaï¿½ï¿½o de Menus
 		JMenu menuCadastro = new JMenu("Cadastro");
 		JMenu menuRelatorio = new JMenu("Relatorios");
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Livro
 		JMenuItem menuItemLivros = new JMenuItem("Livros");
 		menuItemLivros.addActionListener(new ActionListener(){
@@ -39,17 +39,17 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemLivros);
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Autor
 		JMenuItem menuItemAutor = new JMenuItem("Autores");
 		menuItemAutor.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				//new CadastrarAutorUI();		
+				new CadastrarAutorUI();		
 			}	
 		});
 		menuCadastro.add(menuItemAutor);
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Editora
 		JMenuItem menuItemEditora = new JMenuItem("Editoras");
 		menuItemEditora.addActionListener(new ActionListener(){
@@ -59,7 +59,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemEditora);
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Cliente
 		JMenuItem menuItemCliente = new JMenuItem("Clientes");
 		menuItemCliente.addActionListener(new ActionListener(){
