@@ -110,7 +110,7 @@ public class CadastrarClienteUI {
 					public void actionPerformed(ActionEvent e) {
 		
 						ClienteDao cd = new JDBCClienteDao();
-						Cliente Cliente = new Cliente();
+						Cliente cliente = new Cliente();
 						
 						try{
 							if (txtConfirmaSenha == txtSenha){
@@ -126,16 +126,16 @@ public class CadastrarClienteUI {
 							}
 							
 							else {
-								Cliente.setNome(txtNome.getText());
-								Cliente.setSobrenome(txtSobrenome.getText());
-								Cliente.setEmail(txtEmail.getText());
-								Cliente.setSenha(txtSenha.getText());
-								Cliente.setConfirmaSenha(txtConfirmaSenha.getText());
-								Cliente.setCpf(txtCpf.getText());
-								Cliente.setSexo(txtSexo.getText());
-								Cliente.setDataNascimento(txtData.getText());
-								Cliente.setTelefone(txtTelefone.getText());
-								Cliente.setEndereco(txtEndereco.getText());
+								cliente.setNome(txtNome.getText());
+								cliente.setSobrenome(txtSobrenome.getText());
+								cliente.setEmail(txtEmail.getText());
+								cliente.setSenha(txtSenha.getText());
+								cliente.setConfirmaSenha(txtConfirmaSenha.getText());
+								cliente.setCpf(txtCpf.getText());
+								cliente.setSexo(txtSexo.getText());
+								cliente.setDataNascimento(txtData.getText());
+								cliente.setTelefone(txtTelefone.getText());
+								cliente.setEndereco(txtEndereco.getText());
 							
 								
 								JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso!");
