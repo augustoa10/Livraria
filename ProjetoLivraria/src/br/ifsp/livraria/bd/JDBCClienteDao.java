@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 
 public class JDBCClienteDao implements ClienteDao {
 
-	public void cadastrarCliente(Cliente Cliente) {
+	public void cadastrarCliente(Cliente cliente) {
 		
 		try{
 			Connection conexao = ConnectionFactory.createConnection();
