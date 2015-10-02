@@ -1,4 +1,4 @@
-package br.com.ifsp.livraria.enums;
+package br.ifsp.livraria;
 
 
 public enum Categoria {

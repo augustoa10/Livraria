@@ -1,5 +1,4 @@
-package br.com.ifsp.livraria.model;
-
+package br.ifsp.livraria.pojo;
 
 public class Livro {
 

@@ -75,11 +75,11 @@ public class CadastrarAutorUI {
 		panel.add(txtBiografia);
 
 
-		//Criando bot√£o SALVAR
+		//Criando bot„o SALVAR
 		JButton btnSalvar = new JButton(" Salvar ");
 		btnSalvar.addActionListener(new ActionListener() {
 
-			//Tratamento do Bot√£o SALVAR
+			//Tratamento do bot„o SALVAR
 			public void actionPerformed(ActionEvent e) {
 
 				AutorDao ca = new JDBCAutorDao();
@@ -87,7 +87,7 @@ public class CadastrarAutorUI {
 
 				try{
 					if(txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() || txtDataFalescimento.getText().isEmpty() ||txtLocalNascimento.getText().isEmpty() ||txtLocalFalescimento.getText().isEmpty() || txtBiografia.getText().isEmpty()){
-						JOptionPane.showMessageDialog(null,"Voc√™ n√£o preencheu todos os dados, por favor preencha novamente!");				
+						JOptionPane.showMessageDialog(null,"VocÍ n„o preencheu todos os dados, por favor preencha novamente!");				
 					}
 					else
 					{
@@ -104,17 +104,17 @@ public class CadastrarAutorUI {
 						frameCadAutor.dispose();
 					}
 				}catch (Exception exp2){
-					JOptionPane.showMessageDialog(null, "Dados Inv√°lidos. N√£o foi poss√≠vel cadastrar o Autor!");
+					JOptionPane.showMessageDialog(null, "Dados Inv·lidos. N„o foi possÌvel cadastrar o Autor!");
 				}	
 			}
 		});
 		panel.add(btnSalvar);
 
-		//Criando o Bot√£o CANCELAR
+		//Criando o bot„o CANCELAR
 		JButton btnCancelar = new JButton (" Cancelar ");
 		btnCancelar.addActionListener(new ActionListener() {
 
-			//Tratamento do Bot√£o CANCELAR
+			//Tratamento do bot„o CANCELAR
 			public void actionPerformed(ActionEvent arg0) {
 
 				frameCadAutor.dispose();
@@ -124,11 +124,5 @@ public class CadastrarAutorUI {
 
 		//Coloca o painel na janela
 		frameCadAutor.setContentPane(panel);
-
-
-
-
-
 	}
-
 }
