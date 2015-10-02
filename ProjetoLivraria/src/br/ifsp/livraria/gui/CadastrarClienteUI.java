@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import br.ifsp.livraria.bd.ClienteDao;
+import br.ifsp.livraria.bd.JDBCClienteDao;
+import br.ifsp.livraria.pojo.Cliente;
+
 public class CadastrarClienteUI {
 
 	public CadastrarClienteUI(){
@@ -113,21 +117,14 @@ public class CadastrarClienteUI {
 						Cliente cliente = new Cliente();
 						
 						try{
-							if (txtConfirmaSenha == txtSenha){
-								System.out.println("Senha correta");
-							}
-							else {
-								System.out.println("Confirme a senha novamente");
-								txtConfirmaSenha.setText("");
-							}
-							
+					
 							if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() ||txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() || txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEndereco.getText().isEmpty()){
 								JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");
 							}
 							
 							else {
 								cliente.setNome(txtNome.getText());
-								cliente.setSobrenome(txtSobrenome.getText());
+								cliente.setSobreNome(txtSobrenome.getText());
 								cliente.setEmail(txtEmail.getText());
 								cliente.setSenha(txtSenha.getText());
 								cliente.setConfirmaSenha(txtConfirmaSenha.getText());
@@ -137,6 +134,7 @@ public class CadastrarClienteUI {
 								cliente.setTelefone(txtTelefone.getText());
 								cliente.setEndereco(txtEndereco.getText());
 							
+								cd.cadastrarCliente(cliente);
 								
 								JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso!");
 								frameCadCliente.dispose();
