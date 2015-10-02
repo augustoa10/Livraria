@@ -13,7 +13,7 @@ public class JDBCAutorDao implements AutorDao{
 		try{
 			Connection conexao = ConnectionFactory.createConnection();
 
-			String sql = "insert into Autor (nome, dataNascimento, dataFalescimento, localNascimento, localFalescimento, biografia) values (?,?,?,?,?,?)";
+			String sql = "insert into Autor (nome, dataNascimento, dataFalecimento, localNascimento, localFalecimento, biografia) values (?,?,?,?,?,?)";
 			PreparedStatement comando = conexao.prepareStatement(sql);
 
 			comando.setString(1, autor.getNomeAutor());
