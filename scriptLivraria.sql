@@ -44,16 +44,10 @@ CREATE TABLE IF NOT EXISTS `livraria`.`Livro` (
   `precoCusto` DOUBLE NULL,
   `margemLucro` DOUBLE NULL,
   `estoque` INT NULL,
-  `autor` INT NOT NULL,
+  `autor` TEXT NOT NULL,
   `editora` INT NOT NULL,
   PRIMARY KEY (`idLivro`),
-  INDEX `fk_Livro_Autor_idx` (`autor` ASC),
   INDEX `fk_Livro_Editora1_idx` (`editora` ASC),
-  CONSTRAINT `fk_Livro_Autor`
-    FOREIGN KEY (`autor`)
-    REFERENCES `livraria`.`Autor` (`idAutor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Livro_Editora1`
     FOREIGN KEY (`editora`)
     REFERENCES `livraria`.`Editora` (`idEditora`)
