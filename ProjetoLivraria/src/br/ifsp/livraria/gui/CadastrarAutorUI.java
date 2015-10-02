@@ -86,19 +86,23 @@ public class CadastrarAutorUI {
 				Autor autor = new Autor();
 
 				try{
-					autor.setNomeAutor(txtNome.getText());
-					autor.setDataNascimento(txtDataNascimento.getText());
-					autor.setDataFalescimento(txtDataFalescimento.getText());
-					autor.setLocalNascimento(txtLocalNascimento.getText());
-					autor.setLocalFalescimento(txtLocalFalescimento.getText());
-					autor.setBiografia(txtBiografia.getText());
+					if(txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() || txtDataFalescimento.getText().isEmpty() ||txtLocalNascimento.getText().isEmpty() ||txtLocalFalescimento.getText().isEmpty() || txtBiografia.getText().isEmpty()){
+						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");				
+					}
+					else
+					{
+						autor.setNomeAutor(txtNome.getText());
+						autor.setDataNascimento(txtDataNascimento.getText());
+						autor.setDataFalescimento(txtDataFalescimento.getText());
+						autor.setLocalNascimento(txtLocalNascimento.getText());
+						autor.setLocalFalescimento(txtLocalFalescimento.getText());
+						autor.setBiografia(txtBiografia.getText());
 
-					ca.cadastrarAutor(autor);
+						ca.cadastrarAutor(autor);
 
-					JOptionPane.showMessageDialog(null,"Autor cadastrado com sucesso!");
-					frameCadAutor.dispose();
-				}catch (NullPointerException exp1){
-					JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");				
+						JOptionPane.showMessageDialog(null,"Autor cadastrado com sucesso!");
+						frameCadAutor.dispose();
+					}
 				}catch (Exception exp2){
 					JOptionPane.showMessageDialog(null, "Dados Inválidos. Não foi possível cadastrar o Autor!");
 				}	
