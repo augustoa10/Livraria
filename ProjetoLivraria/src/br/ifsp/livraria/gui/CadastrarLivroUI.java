@@ -197,8 +197,7 @@ public class CadastrarLivroUI {
 						livro.setTitulo(txtTit.getText());
 						livro.setDataDePublicacao(txtDataPublica.getText());
 						livro.setEditora(txtEd.getText());
-						livro.setCategoria(txtCategoria.getText()
-								.toString());
+						livro.setCategoria(txtCategoria.getText());
 						livro.setPrecoDeVenda(Double.parseDouble(txtPrecoVenda
 								.getText()));
 						livro.setResumo(txtResumo.getText());
@@ -221,7 +220,7 @@ public class CadastrarLivroUI {
 						livro.setMargemDeLucro(Double.parseDouble(txtMargemDeLucro.getText()));
 						livro.setQuantidadeEmEstoque(Integer.parseInt(txtEstoque.getText()));
 
-						livroDao.cadastrarLivro();
+						livroDao.cadastrarLivro(livro);
 					}
 				} catch (HeadlessException e) {
 					JOptionPane.showMessageDialog(null,"Dados Inválidos. Não foi possível cadastrar o Livro!");
@@ -322,7 +321,6 @@ public class CadastrarLivroUI {
 		painelCadLivro.setVisible(true);
 		telaCadastroLivro.setVisible(true);
 		telaCadastroLivro.setResizable(false);
-
 	}
 
 }
