@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS livraria;
 CREATE SCHEMA IF NOT EXISTS `livraria` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `livraria` ;
 
@@ -65,7 +66,9 @@ CREATE TABLE IF NOT EXISTS `livraria`.`Cliente` (
   `sobrenome` VARCHAR(120) NULL,
   `email` VARCHAR(50) NULL,
   `senha` VARCHAR(20) NULL,
+  `confirmaSenha` VARCHAR(20) NULL,
   `cpf` VARCHAR(20) NULL,
+  `sexo` VARCHAR(20) NULL,
   `dataNascimento` VARCHAR(15) NULL,
   `telefone` VARCHAR(30) NULL,
   `endereco` VARCHAR(150) NULL,
