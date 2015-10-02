@@ -1,0 +1,10 @@
+package br.com.ifsp.livraria.bd;
+
+public class JDBCLivroDao implements LivroDao{
+
+	@Override
+	public void cadastrarLivro() {
+		
+	}
+	
+}

@@ -1,7 +1,5 @@
 package br.com.ifsp.livraria.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Livro {
 
@@ -9,39 +7,19 @@ public class Livro {
 	private int isbn;
 	private String titulo;
 	private String dataDePublicacao; 
-	private Editora editora; 
+	private String editora; 
 	private String categoria; //Originalmente String
 	private double precoDeVenda;
 	private String resumo;
 	private String indice; //capítulos todos numerados
 	
-	private final List<Autor> autores = new ArrayList<Autor>(); 
+	private String autores;
 	
 	//Somente usuários internos
 	private double precoDeCusto;
 	private double margemDeLucro;
 	private int quantidadeEmEstoque;
 	
-	//Construtor - todos os atributos exceto autores 
-	public Livro(int isbn, String titulo, String dataDePublicacao,
-			Editora editora, String categoria, double precoDeVenda,
-			String resumo, String indice, double precoDeCusto,
-			double margemDeLucro, int quantidadeEmEstoque) {
-		
-		this.isbn = isbn;
-		this.titulo = titulo;
-		this.dataDePublicacao = dataDePublicacao;
-		this.editora = editora;
-		this.categoria = categoria;
-		this.precoDeVenda = precoDeVenda;
-		this.resumo = resumo;
-		this.indice = indice;
-		this.precoDeCusto = precoDeCusto;
-		this.margemDeLucro = margemDeLucro;
-		this.quantidadeEmEstoque = quantidadeEmEstoque;
-		
-	}
-
 	public Integer getIsbn() {
 		return isbn;
 	}
@@ -54,7 +32,7 @@ public class Livro {
 		return dataDePublicacao;
 	}
 
-	public Editora getEditora() {
+	public String getEditora() {
 		return editora;
 	}
 
@@ -74,10 +52,6 @@ public class Livro {
 		return indice;
 	}
 
-	public List<Autor> getAutores() {
-		return autores;
-	}
-
 	public double getPrecoDeCusto() {
 		return precoDeCusto;
 	}
@@ -89,7 +63,61 @@ public class Livro {
 	public int getQuantidadeEmEstoque() {
 		return quantidadeEmEstoque;
 	}
+
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public void setDataDePublicacao(String dataDePublicacao) {
+		this.dataDePublicacao = dataDePublicacao;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setPrecoDeVenda(double precoDeVenda) {
+		this.precoDeVenda = precoDeVenda;
+	}
+
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+
+	public void setIndice(String indice) {
+		this.indice = indice;
+	}
+
+	public void setPrecoDeCusto(double precoDeCusto) {
+		this.precoDeCusto = precoDeCusto;
+	}
+
+	public void setMargemDeLucro(double margemDeLucro) {
+		this.margemDeLucro = margemDeLucro;
+	}
+
+	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+		this.quantidadeEmEstoque = quantidadeEmEstoque;
+	}
 	
+	public String getAutores() {
+		return autores;
+	}
+
+	public void setAutores(String autores) {
+		this.autores = autores;
+	}
 	
+	public void setAutoresInc(String autores) {
+		this.autores += autores;
+	}
 	
 }

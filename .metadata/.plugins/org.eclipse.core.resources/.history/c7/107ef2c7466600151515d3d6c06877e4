@@ -1,0 +1,11 @@
+package br.com.ifsp.livraria.enums;
+
+public class Categoria {
+	private static Categoria instance = null;
+	static{
+		instance = new Categoria();
+	}
+	String BANCO_DE_DADOS,CULINARIA;
+	
+	public
+}

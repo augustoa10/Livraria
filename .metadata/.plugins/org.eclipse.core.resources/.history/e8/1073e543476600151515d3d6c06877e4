@@ -1,0 +1,23 @@
+package br.com.ifsp.livraria.enums;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Categoria {
+	private static Categoria instance = null;
+	static{
+		instance = new Categoria();
+	}
+	
+	
+	
+	public Categoria() {
+		
+	}
+
+
+
+	private List<String> listaCategorias = new  
+	
+	
+}

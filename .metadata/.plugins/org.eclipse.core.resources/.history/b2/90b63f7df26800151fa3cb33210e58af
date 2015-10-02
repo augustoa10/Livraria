@@ -1,0 +1,9 @@
+package br.com.ifsp.main;
+
+import br.com.ifsp.livraria.gui.TelaCadastroDeLivros;
+
+public class Main {
+	public static void main(String[] args) {
+		new TelaCadastroDeLivros();
+	}
+}

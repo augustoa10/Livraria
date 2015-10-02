@@ -1,0 +1,60 @@
+package br.com.ifsp.livraria.bd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.ifsp.livraria.model.Autor;
+import br.com.ifsp.livraria.model.Editora;
+import br.com.ifsp.livraria.model.Livro;
+
+public class JDBCLivroDao implements LivroDao{
+
+	@Override
+	public void cadastrarLivro() {
+		Connection conexao = ConnectionFactory.createConnection();
+		
+		String sql = "insert into livro (isbn,titulo,dataDePublicacao,"
+				+ "editora,categoria,precoDeVenda,resumo,indice,autores"
+				+ "precoDeCusto,margemDeLucro,quantidadeEmEstoque) "
+				+ "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement comando = conexao.prepareStatement(sql);
+		
+		Livro livro = new Livro();
+		comando.setInt(1, livro.getIsbn());
+		comando.setString(2, livro.getTitulo());
+		comando.setString(3, livro.getDataDePublicacao());
+		comando.setString(4, livro.getEditora().toString());
+		comando.setString(5, livro.getCategoria());
+		comando.setDouble(6, livro.getPrecoDeVenda());
+		comando.setString(7, livro.getResumo());
+		comando.setString(8, livro.getIndice());
+		//TODO Set N Authors, validate
+		comando.setString(9, livro.getAutores().toString());
+		comando.setDouble(10, livro.getPrecoDeCusto());
+		comando.setDouble(11, livro.getPrecoDeCusto());
+		comando.setDouble(12, livro.getQuantidadeEmEstoque());
+		
+		
+		
+		private int isbn;
+		private String titulo;
+		private String dataDePublicacao; 
+		private Editora editora; 
+		private String categoria; //Originalmente String
+		private double precoDeVenda;
+		private String resumo;
+		private String indice; //capítulos todos numerados
+		
+		private final List<Autor> autores = new ArrayList<Autor>(); 
+		
+		//Somente usuários internos
+		private double precoDeCusto;
+		private double margemDeLucro;
+		private int quantidadeEmEstoque;
+		
+				
+	}
+	
+}

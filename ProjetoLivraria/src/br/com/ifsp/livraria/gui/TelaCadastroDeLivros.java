@@ -51,7 +51,7 @@ public class TelaCadastroDeLivros {
 		// Tratamento isbn
 		JLabel rotISBN = new JLabel("ISBN: ");
 		JFormattedTextField txtISBN = new JFormattedTextField(
-				new MaskFormatter("##########"));
+				new MaskFormatter("######"));
 		rotISBN.setLabelFor(txtISBN);
 		rotISBN.setBounds(50, 20, 80, 20);
 		txtISBN.setBounds(170, 20, 80, 20);
@@ -123,7 +123,8 @@ public class TelaCadastroDeLivros {
 		// Quantidade em estoque
 		JLabel rotEstoque = new JLabel("Estoque: ");
 		JFormattedTextField txtEstoque = new JFormattedTextField(
-				new MaskFormatter("#######"));
+				new MaskFormatter("#.###.###"));
+		txtMargemDeLucro.setFormatterFactory(dfFactory);
 		rotEstoque.setLabelFor(txtEstoque);
 		rotEstoque.setBounds(50, 340, 80, 20);
 		txtEstoque.setBounds(170, 340, 80, 20);
