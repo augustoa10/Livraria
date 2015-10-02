@@ -2,6 +2,7 @@ package br.ifsp.livraria.pojo;
 
 public class Cliente {
 
+		//Atributos Cliente
 	    private String nome;
 		private String sobreNome;
 		private String email;
@@ -13,6 +14,7 @@ public class Cliente {
 		private String telefone;
 		private String endereco;
 		
+		//Getters and Setters
 		public String getNome() {
 			return nome;
 		}

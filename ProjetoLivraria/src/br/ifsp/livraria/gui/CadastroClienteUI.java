@@ -10,9 +10,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import br.ifsp.livraria.bd.ClienteDao;
+import br.ifsp.livraria.bd.JDBCClienteDao;
+import br.ifsp.livraria.pojo.Cliente;
+
 public class CadastroClienteUI {
 
-	public CadastrarClienteUI(){
+	public void CadastrarClienteUI(){
 		
 		//Criando o Frame para o cadastro de Cliente
 		final JFrame frameCadCliente = new JFrame("Cadastro de Cliente");

@@ -12,7 +12,6 @@ import javax.swing.border.BevelBorder;
 public class PrincipalUI {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		//Criando frame
 		final JFrame frame = new JFrame("Sistema para Livraria");
@@ -21,15 +20,15 @@ public class PrincipalUI {
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		
-		// Criaï¿½ï¿½o da barra de menu
+		// Criação da barra de menu
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));	
 		
-		// Criaï¿½ï¿½o de Menus
+		// Criação de Menus
 		JMenu menuCadastro = new JMenu("Cadastro");
 		JMenu menuRelatorio = new JMenu("Relatorios");
 		
-		// Criaï¿½ï¿½o dos submenus de Cadastro
+		// Criaçãoo dos submenus de Cadastro
 		// Cadastrar Livro
 		JMenuItem menuItemLivros = new JMenuItem("Livros");
 		menuItemLivros.addActionListener(new ActionListener(){
@@ -39,7 +38,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemLivros);
 		
-		// Criaï¿½ï¿½o dos submenus de Cadastro
+		// Criação dos submenus de Cadastro
 		// Cadastrar Autor
 		JMenuItem menuItemAutor = new JMenuItem("Autores");
 		menuItemAutor.addActionListener(new ActionListener(){
@@ -49,7 +48,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemAutor);
 		
-		// Criaï¿½ï¿½o dos submenus de Cadastro
+		// Criaçãoo dos submenus de Cadastro
 		// Cadastrar Editora
 		JMenuItem menuItemEditora = new JMenuItem("Editoras");
 		menuItemEditora.addActionListener(new ActionListener(){
@@ -59,12 +58,12 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemEditora);
 		
-		// Criaï¿½ï¿½o dos submenus de Cadastro
+		// Criação dos submenus de Cadastro
 		// Cadastrar Cliente
 		JMenuItem menuItemCliente = new JMenuItem("Clientes");
 		menuItemCliente.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				//new CadastrarClienteUI();		
+				new CadastroClienteUI();		
 			}	
 		});
 		menuCadastro.add(menuItemCliente);
@@ -75,7 +74,6 @@ public class PrincipalUI {
 		menuItemSair.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-
 			}
 		});
 		menuCadastro.add(menuItemSair);
@@ -86,7 +84,5 @@ public class PrincipalUI {
 		
 		//Adicionando o JMenuBar no JFrame
 		frame.setJMenuBar(menuBar);
-
 	}
-
 }

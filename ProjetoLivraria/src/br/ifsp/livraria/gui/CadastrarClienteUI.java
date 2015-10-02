@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import br.ifsp.livraria.bd.ClienteDao;
+import br.ifsp.livraria.bd.JDBCClienteDao;
+import br.ifsp.livraria.pojo.Cliente;
+
 public class CadastrarClienteUI {
 
 	public CadastrarClienteUI(){
@@ -127,7 +131,7 @@ public class CadastrarClienteUI {
 							
 							else {
 								cliente.setNome(txtNome.getText());
-								cliente.setSobrenome(txtSobrenome.getText());
+								cliente.setSobreNome(txtSobrenome.getText());
 								cliente.setEmail(txtEmail.getText());
 								cliente.setSenha(txtSenha.getText());
 								cliente.setConfirmaSenha(txtConfirmaSenha.getText());

@@ -2,11 +2,13 @@ package br.ifsp.livraria.pojo;
 
 public class Editora {
 
+	//Atributos Editora
 	private String nomeEditora;
 	private String endereco;
 	private String telefone;
 	private String cnpj;
 	
+	//Getters and Setters
 	public String getNomeEditora() {
 		return nomeEditora;
 	}
