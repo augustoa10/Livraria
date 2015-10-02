@@ -1,9 +1,9 @@
-package br.com.ifsp.livraria.bd;
+package br.ifsp.livraria.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import br.com.ifsp.livraria.model.Livro;
+import br.ifsp.livraria.pojo.Livro;
 
 public class JDBCLivroDao implements LivroDao {
 

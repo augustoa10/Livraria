@@ -3,6 +3,8 @@ package br.ifsp.livraria.bd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import br.ifsp.livraria.pojo.Cliente;
+
 public class JDBCClienteDao implements ClienteDao {
 
 	public void cadastrarCliente(Cliente cliente) {
@@ -14,7 +16,7 @@ public class JDBCClienteDao implements ClienteDao {
 			PreparedStatement comando = conexao.prepareStatement(sql);
 			
 			comando.setString(1, cliente.getNome());
-			comando.setString(2, cliente.getSobrenome());
+			comando.setString(2, cliente.getSobreNome());
 			comando.setString(3, cliente.getEmail());
 			comando.setString(4, cliente.getSenha());
 			comando.setString(5, cliente.getConfirmaSenha());
