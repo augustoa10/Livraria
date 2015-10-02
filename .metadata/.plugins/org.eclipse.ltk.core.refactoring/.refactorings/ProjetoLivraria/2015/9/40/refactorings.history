@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Extract local variable &apos;values&apos; from expression &apos;Categoria.values()&apos;&#x0D;&#x0A;- Original project: &apos;ProjetoLivraria&apos;&#x0D;&#x0A;- Variable name: &apos;values&apos;&#x0D;&#x0A;- Destination method: &apos;br.com.ifsp.livraria.gui.TelaCadastroDeLivros.TelaCadastroDeLivros()&apos;&#x0D;&#x0A;- Variable expression: &apos;Categoria.values()&apos;" description="Extract local variable &apos;values&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src&lt;br.com.ifsp.livraria.gui{TelaCadastroDeLivros.java" name="values" replace="false" selection="2234 0" stamp="1443573328130" version="1.0"/>
-</session>

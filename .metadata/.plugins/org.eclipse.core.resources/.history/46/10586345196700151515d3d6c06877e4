@@ -1,7 +1,0 @@
-package br.com.ifsp.livraria.bd;
-
-public class JDBCLivroDao {
-	public void cadastrarLivro(){
-		
-	}
-}
