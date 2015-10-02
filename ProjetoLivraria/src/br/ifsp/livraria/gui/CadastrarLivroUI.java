@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
@@ -39,7 +37,6 @@ public class CadastrarLivroUI {
 		NumberFormatter numFormatter = new NumberFormatter(decimal);
 		numFormatter.setFormat(decimal);
 		numFormatter.setAllowsInvalid(false);
-		DefaultFormatterFactory dfFactory = new DefaultFormatterFactory(numFormatter);
 
 		// painel Livro
 		JPanel painelCadLivro = new JPanel();
@@ -48,7 +45,7 @@ public class CadastrarLivroUI {
 
 		// Tratamento isbn
 		JLabel rotISBN = new JLabel("ISBN: ");
-		JFormattedTextField txtISBN = new JFormattedTextField(new MaskFormatter("######"));
+		JTextField txtISBN = new JTextField();
 		rotISBN.setLabelFor(txtISBN);
 		rotISBN.setBounds(50, 20, 80, 20);
 		txtISBN.setBounds(170, 20, 80, 20);
@@ -82,45 +79,36 @@ public class CadastrarLivroUI {
 
 		// Categoria
 		JLabel rotCategoria = new JLabel("Categoria: ");
-		Categoria[] values = Categoria.values();
-
-		JComboBox cboxCategoria = new JComboBox(values);
-		rotCategoria.setLabelFor(cboxCategoria);
+		JTextField txtCategoria = new JTextField();
+		
+		rotCategoria.setLabelFor(txtCategoria);
 		rotCategoria.setBounds(50, 180, 120, 20);
-		cboxCategoria.setBounds(170, 180, 80, 20);
-		cboxCategoria.setSelectedIndex(-1);
+		txtCategoria.setBounds(170, 180, 80, 20);
 
 		// Preço de Venda
 		JLabel rotPrecoVenda = new JLabel("Preço de Venda: ");
-		JFormattedTextField txtPrecoVenda = new JFormattedTextField(
-				new MaskFormatter("#.###,##"));
-		txtPrecoVenda.setFormatterFactory(dfFactory);
+		JTextField txtPrecoVenda = new JTextField();
 		rotPrecoVenda.setLabelFor(txtPrecoVenda);
 		rotPrecoVenda.setBounds(50, 220, 120, 20);
 		txtPrecoVenda.setBounds(170, 220, 80, 20);
 
 		// Preço de Custo
 		JLabel rotPrecoCusto = new JLabel("Preço de Custo: ");
-		JFormattedTextField txtPrecoCusto = new JFormattedTextField(
-				new MaskFormatter("#.###,##"));
-		txtPrecoVenda.setFormatterFactory(dfFactory);
+		JTextField txtPrecoCusto = new JTextField();
 		rotPrecoCusto.setLabelFor(txtPrecoCusto);
 		rotPrecoCusto.setBounds(50, 260, 120, 20);
 		txtPrecoCusto.setBounds(170, 260, 80, 20);
 
 		// Margem de Lucro
 		JLabel rotMargemDeLucro = new JLabel("Margem de Lucro: ");
-		JFormattedTextField txtMargemDeLucro = new JFormattedTextField(
-				new MaskFormatter("#.###,##"));
-		txtMargemDeLucro.setFormatterFactory(dfFactory);
+		JTextField txtMargemDeLucro = new JTextField();
 		rotMargemDeLucro.setLabelFor(txtMargemDeLucro);
 		rotMargemDeLucro.setBounds(50, 300, 120, 20);
 		txtMargemDeLucro.setBounds(170, 300, 80, 20);
 
 		// Quantidade em estoque
 		JLabel rotEstoque = new JLabel("Estoque: ");
-		JFormattedTextField txtEstoque = new JFormattedTextField(new MaskFormatter("#.###.###"));
-		txtMargemDeLucro.setFormatterFactory(dfFactory);
+		JTextField txtEstoque = new JTextField();
 		rotEstoque.setLabelFor(txtEstoque);
 		rotEstoque.setBounds(50, 340, 80, 20);
 		txtEstoque.setBounds(170, 340, 80, 20);
@@ -196,7 +184,7 @@ public class CadastrarLivroUI {
 							|| txtPrecoVenda.getText().isEmpty()
 							|| txtResumo.getText().isEmpty()
 							|| txtTit.getText().isEmpty()
-							|| cboxCategoria.getSelectedIndex() == -1) {
+							|| txtCategoria.getText().isEmpty()){
 						JOptionPane
 						.showMessageDialog(null,
 								"Você não preencheu todos os dados, por favor preencha novamente!");
@@ -209,7 +197,7 @@ public class CadastrarLivroUI {
 						livro.setTitulo(txtTit.getText());
 						livro.setDataDePublicacao(txtDataPublica.getText());
 						livro.setEditora(txtEd.getText());
-						livro.setCategoria(cboxCategoria.getSelectedItem()
+						livro.setCategoria(txtCategoria.getText()
 								.toString());
 						livro.setPrecoDeVenda(Double.parseDouble(txtPrecoVenda
 								.getText()));
@@ -256,7 +244,7 @@ public class CadastrarLivroUI {
 				txtEd.setText("");
 				txtISBN.setText("");
 				txtTit.setText("");
-				cboxCategoria.setSelectedIndex(-1);
+				txtCategoria.setText("");
 
 				telaCadastroLivro.dispose();
 			}
@@ -292,7 +280,7 @@ public class CadastrarLivroUI {
 		painelCadLivro.add(txtDataPublica);
 
 		painelCadLivro.add(rotCategoria);
-		painelCadLivro.add(cboxCategoria);
+		painelCadLivro.add(txtCategoria);
 
 		painelCadLivro.add(rotPrecoVenda);
 		painelCadLivro.add(txtPrecoVenda);
