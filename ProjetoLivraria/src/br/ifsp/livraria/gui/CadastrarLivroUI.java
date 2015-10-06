@@ -193,12 +193,12 @@ public class CadastrarLivroUI {
 					else {
 						System.out.println("");
 
-						livro.setIsbn(Integer.parseInt(txtISBN.getText()));
+						livro.setIsbn(txtISBN.getText());
 						livro.setTitulo(txtTit.getText());
-						livro.setDataDePublicacao(txtDataPublica.getText());
+						livro.setDataPublicacao(txtDataPublica.getText());
 						livro.setEditora(txtEd.getText());
 						livro.setCategoria(txtCategoria.getText());
-						livro.setPrecoDeVenda(Double.parseDouble(txtPrecoVenda
+						livro.setPrecoVenda(Double.parseDouble(txtPrecoVenda
 								.getText()));
 						livro.setResumo(txtResumo.getText());
 						livro.setIndice(txtIndice.getText());
@@ -209,18 +209,21 @@ public class CadastrarLivroUI {
 							livro.setAutores(txtAut.getText());
 						}
 						if (!txtAut2.getText().isEmpty()) {
-							livro.setAutoresInc(" - "+txtAut2.getText());
+							livro.setAutores(" - "+txtAut2.getText());
 						}
 						if (!txtAut3.getText().isEmpty()) {
-							livro.setAutoresInc(" - "+txtAut3.getText());
+							livro.setAutores(" - "+txtAut3.getText());
 						}
 
 
-						livro.setPrecoDeCusto(Double.parseDouble(txtPrecoCusto.getText()));
-						livro.setMargemDeLucro(Double.parseDouble(txtMargemDeLucro.getText()));
-						livro.setQuantidadeEmEstoque(Integer.parseInt(txtEstoque.getText()));
+						livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
+						livro.setMargemLucro(Double.parseDouble(txtMargemDeLucro.getText()));
+						livro.setEstoque(Integer.parseInt(txtEstoque.getText()));
 
 						livroDao.cadastrarLivro(livro);
+						
+						JOptionPane.showMessageDialog(null,"Livro cadastrado com sucesso!");
+						telaCadastroLivro.dispose();
 					}
 				} catch (HeadlessException e) {
 					JOptionPane.showMessageDialog(null,"Dados Inválidos. Não foi possível cadastrar o Livro!");
