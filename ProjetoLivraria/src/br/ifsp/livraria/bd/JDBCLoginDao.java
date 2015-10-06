@@ -24,14 +24,16 @@ public class JDBCLoginDao implements LoginDao{
 		Cliente c = new Cliente();
 		
 			while(resultado.next()){
-				c.setCpf(resultado.getString("cpf"));
 				c.setNome(resultado.getString("nome"));
-				c.setDataNascimento(resultado.getString("dataNascimento"));
-				c.setEmail(resultado.getString("email"));
-				c.setEndereco(resultado.getString("endereco"));
-				c.setSexo(resultado.getString("sexo"));
 				c.setSobreNome(resultado.getString("sobrenome"));
+				c.setEmail(resultado.getString("email"));
+				c.setSenha(resultado.getString("senha"));
+				c.setConfirmaSenha(resultado.getString("confirmaSenha"));
+				c.setCpf(resultado.getString("cpf"));
+				c.setSexo(resultado.getString("sexo"));
+				c.setDataNascimento(resultado.getString("dataNascimento"));
 				c.setTelefone(resultado.getString("telefone"));
+				c.setEndereco(resultado.getString("endereco"));
 			}
 		
 		resultado.close();
