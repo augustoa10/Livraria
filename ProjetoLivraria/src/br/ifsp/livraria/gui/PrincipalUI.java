@@ -9,9 +9,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.border.BevelBorder;
 
+import br.ifsp.livraria.pojo.Cliente;
+
 public class PrincipalUI {
 
-	public static void main(String[] args) {
+	public void menuPrincipal(Cliente c){
 
 		//Criando frame
 		final JFrame frame = new JFrame("Sistema para Livraria");
@@ -67,6 +69,17 @@ public class PrincipalUI {
 			}	
 		});
 		menuCadastro.add(menuItemCliente);
+		menuCadastro.addSeparator();
+		
+		// Criação dos submenus de Cadastro
+		// Perfil do cliente
+		JMenuItem menuItemDados = new JMenuItem("Dados Pessoais");
+		menuItemDados.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0) {		
+				//new DadosClienteUI(c);		
+			}	
+		});
+		menuCadastro.add(menuItemDados);
 		menuCadastro.addSeparator();
 		
 		// Menu Sair
