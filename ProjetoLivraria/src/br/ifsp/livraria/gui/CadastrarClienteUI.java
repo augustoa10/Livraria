@@ -20,7 +20,7 @@ public class CadastrarClienteUI {
 
 		//Criando o Frame para o cadastro de Cliente
 		final JFrame frameCadCliente = new JFrame("Cadastro de Cliente");
-		frameCadCliente.setSize(400, 260);
+		frameCadCliente.setSize(370, 510);
 		frameCadCliente.setVisible(true);
 		frameCadCliente.setLocationRelativeTo(null);
 
@@ -117,6 +117,14 @@ public class CadastrarClienteUI {
 				Cliente cliente = new Cliente();
 
 				try{
+					if(txtConfirmaSenha.getText().equals(txtSenha.getText()))  {  
+					  
+						JOptionPane.showMessageDialog(null,"Senha de confirmação correta!");   
+					}  
+					else  {  
+						JOptionPane.showMessageDialog(null,"Senha de confirmação incorreta!");  
+						txtConfirmaSenha.setText("");
+					}  
 
 					if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() ||txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() || txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEndereco.getText().isEmpty()){
 						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");
