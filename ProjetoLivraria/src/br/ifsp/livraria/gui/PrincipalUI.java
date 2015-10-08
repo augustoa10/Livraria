@@ -1,19 +1,30 @@
 package br.ifsp.livraria.gui;
 
+import java.awt.Image;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
 import br.ifsp.livraria.pojo.Cliente;
 
 public class PrincipalUI {
-
-	public void menuPrincipal(Cliente c){
+	
+	public static void main(String[] args) {
+		menuPrincipal();
+	}
+	
+	public static void menuPrincipal(){
 
 		//Criando frame
 		final JFrame frame = new JFrame("Sistema para Livraria");
@@ -21,6 +32,15 @@ public class PrincipalUI {
 		frame.setSize(800, 400);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
+
+		ImageIcon imgbrackground = new ImageIcon("javalib/background.gif"); 
+		JLabel background = new JLabel(imgbrackground);
+		frame.add(background);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("javalib\\icon.gif");
+		frame.setIconImage(icon);
+		
+		frame.validate(); 
 		
 		// Criação da barra de menu
 		JMenuBar menuBar = new JMenuBar();
@@ -35,7 +55,7 @@ public class PrincipalUI {
 		JMenuItem menuItemLivros = new JMenuItem("Livros");
 		menuItemLivros.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				new CadastrarLivroUI();		
+				//new CadastrarLivroUI();		
 			}	
 		});
 		menuCadastro.add(menuItemLivros);

@@ -20,7 +20,7 @@ public class CadastrarAutorUI {
 	public CadastrarAutorUI(){
 
 		final JFrame frameCadAutor = new JFrame("Cadastro de Autor");
-		frameCadAutor.setSize(400,260);
+		frameCadAutor.setSize(400,350);
 		frameCadAutor.setVisible(true);
 		frameCadAutor.setLocationRelativeTo(null);
 
@@ -68,18 +68,18 @@ public class CadastrarAutorUI {
 
 		//Criando a label Biografia
 		JLabel rotuloBiografia = new JLabel();
-		rotuloLocalNascimento.setText("Biografia: ");
+		rotuloBiografia.setText("Biografia: ");
 		panel.add(rotuloBiografia);
 
 		final JTextField txtBiografia = new JTextField(30);
 		panel.add(txtBiografia);
 
 
-		//Criando botão SALVAR
+		//Criando botï¿½o SALVAR
 		JButton btnSalvar = new JButton(" Salvar ");
 		btnSalvar.addActionListener(new ActionListener() {
 
-			//Tratamento do botão SALVAR
+			//Tratamento do botï¿½o SALVAR
 			public void actionPerformed(ActionEvent e) {
 
 				AutorDao ca = new JDBCAutorDao();
@@ -87,7 +87,7 @@ public class CadastrarAutorUI {
 
 				try{
 					if(txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() || txtDataFalescimento.getText().isEmpty() ||txtLocalNascimento.getText().isEmpty() ||txtLocalFalescimento.getText().isEmpty() || txtBiografia.getText().isEmpty()){
-						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");				
+						JOptionPane.showMessageDialog(null,"Vocï¿½ nï¿½o preencheu todos os dados, por favor preencha novamente!");				
 					}
 					else
 					{
@@ -104,17 +104,17 @@ public class CadastrarAutorUI {
 						frameCadAutor.dispose();
 					}
 				}catch (Exception exp2){
-					JOptionPane.showMessageDialog(null, "Dados Inválidos. Não foi possível cadastrar o Autor!");
+					JOptionPane.showMessageDialog(null, "Dados Invï¿½lidos. Nï¿½o foi possï¿½vel cadastrar o Autor!");
 				}	
 			}
 		});
 		panel.add(btnSalvar);
 
-		//Criando o botão CANCELAR
+		//Criando o botï¿½o CANCELAR
 		JButton btnCancelar = new JButton (" Cancelar ");
 		btnCancelar.addActionListener(new ActionListener() {
 
-			//Tratamento do botão CANCELAR
+			//Tratamento do botï¿½o CANCELAR
 			public void actionPerformed(ActionEvent arg0) {
 
 				frameCadAutor.dispose();
