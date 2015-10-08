@@ -94,7 +94,7 @@ public class PrincipalUI {
 		JMenuItem menuItemDados = new JMenuItem("Dados Pessoais");
 		menuItemDados.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				//new DadosClienteUI(c);		
+				new DadosClienteUI(c);		
 			}	
 		});
 		menuCadastro.add(menuItemDados);
