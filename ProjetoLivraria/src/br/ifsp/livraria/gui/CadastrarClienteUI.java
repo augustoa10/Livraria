@@ -68,7 +68,7 @@ public class CadastrarClienteUI {
 
 		//Criando a label CPF
 		JLabel rotuloCPF = new JLabel();
-		rotuloSenha.setText("CPF: ");
+		rotuloCPF.setText("CPF: ");
 		panel.add(rotuloCPF);
 
 		final JTextField txtCpf = new JTextField(30);
@@ -98,19 +98,19 @@ public class CadastrarClienteUI {
 		final JTextField txtTelefone = new JTextField(30);
 		panel.add(txtTelefone);
 
-		//Criando a label Endere√ßo
+		//Criando a label Endere√É¬ßo
 		JLabel rotuloEndereco = new JLabel();
-		rotuloEndereco.setText("EndereÁo: ");
+		rotuloEndereco.setText("Endere√ßo: ");
 		panel.add(rotuloEndereco);
 
 		final JTextField txtEndereco = new JTextField(30);
 		panel.add(txtEndereco);
 
-		//Criando bot√£o SALVAR
+		//Criando bot√É¬£o SALVAR
 		JButton btnSalvar = new JButton(" Salvar ");
 		btnSalvar.addActionListener(new ActionListener() {
 
-			//Tratamento do Bot√£o SALVAR
+			//Tratamento do Bot√É¬£o SALVAR
 			public void actionPerformed(ActionEvent e) {
 
 				ClienteDao cd = new JDBCClienteDao();
@@ -119,15 +119,15 @@ public class CadastrarClienteUI {
 				try{
 					if(txtConfirmaSenha.getText().equals(txtSenha.getText()))  {  
 					  
-						JOptionPane.showMessageDialog(null,"Senha de confirmaÁ„o correta!");   
+						JOptionPane.showMessageDialog(null,"Senha de confirma√ß√£o correta!");   
 					}  
 					else  {  
-						JOptionPane.showMessageDialog(null,"Senha de confirmaÁ„o incorreta!");  
+						JOptionPane.showMessageDialog(null,"Senha de confirma√ß√£o incorreta!");  
 						txtConfirmaSenha.setText("");
 					}  
 
 					if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() ||txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() || txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEndereco.getText().isEmpty()){
-						JOptionPane.showMessageDialog(null,"VocÍ n„o preencheu todos os dados, por favor preencha novamente!");
+						JOptionPane.showMessageDialog(null,"Voc√™ n√£o preencheu todos os dados, por favor preencha novamente!");
 					}
 
 					else {
@@ -149,17 +149,17 @@ public class CadastrarClienteUI {
 					}
 				}
 				catch (Exception e1) {
-					JOptionPane.showMessageDialog(null, "Dados Inv·lidos. N„o foi possÌvel cadastrar o Cliente!");
+					JOptionPane.showMessageDialog(null, "Dados Inv√°lidos. N√£o foi poss√≠vel cadastrar o Cliente!");
 				}	
 			}
 		});
 		panel.add(btnSalvar);
 
-		//Criando o bot„o CANCELAR
+		//Criando o bot√£o CANCELAR
 		JButton btnCancelar = new JButton (" Cancelar ");
 		btnCancelar.addActionListener(new ActionListener() {
 
-			//Tratamento do bot„o CANCELAR
+			//Tratamento do bot√£o CANCELAR
 			public void actionPerformed(ActionEvent arg0) {
 
 				frameCadCliente.dispose();
