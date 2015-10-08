@@ -15,7 +15,7 @@ import br.ifsp.livraria.pojo.Cliente;
 public class DadosClienteUI {
 	public DadosClienteUI(Cliente c) {
 		
-		final JFrame frame = new JFrame("Dados pessoais - "+c.getNome()+" "+c.getSobreNome());
+		final JFrame frame = new JFrame("Dados de Cadastro - "+c.getNome()+" "+c.getSobreNome());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 600);
 		frame.setLocationRelativeTo(null);
