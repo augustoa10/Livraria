@@ -1,12 +1,19 @@
 package br.ifsp.livraria.gui;
 
+import java.awt.Image;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
 import br.ifsp.livraria.pojo.Cliente;
@@ -22,15 +29,26 @@ public class PrincipalUI {
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		
-		// Criação da barra de menu
+		// background image and icon
+		
+		ImageIcon imgbrackground = new ImageIcon("javalib/background.gif"); 
+		JLabel background = new JLabel(imgbrackground);
+		frame.add(background);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("javalib\\icon.gif");
+		frame.setIconImage(icon);
+		
+		frame.validate(); 
+		
+		// Criaï¿½ï¿½o da barra de menu
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));	
 		
-		// Criação de Menus
+		// Criaï¿½ï¿½o de Menus
 		JMenu menuCadastro = new JMenu("Cadastro");
 		JMenu menuRelatorio = new JMenu("Relatorios");
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Livro
 		JMenuItem menuItemLivros = new JMenuItem("Livros");
 		menuItemLivros.addActionListener(new ActionListener(){
@@ -40,7 +58,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemLivros);
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Autor
 		JMenuItem menuItemAutor = new JMenuItem("Autores");
 		menuItemAutor.addActionListener(new ActionListener(){
@@ -50,7 +68,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemAutor);
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Editora
 		JMenuItem menuItemEditora = new JMenuItem("Editoras");
 		menuItemEditora.addActionListener(new ActionListener(){
@@ -60,7 +78,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemEditora);
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Cadastrar Cliente
 		JMenuItem menuItemCliente = new JMenuItem("Clientes");
 		menuItemCliente.addActionListener(new ActionListener(){
@@ -71,7 +89,7 @@ public class PrincipalUI {
 		menuCadastro.add(menuItemCliente);
 		menuCadastro.addSeparator();
 		
-		// Criação dos submenus de Cadastro
+		// Criaï¿½ï¿½o dos submenus de Cadastro
 		// Perfil do cliente
 		JMenuItem menuItemDados = new JMenuItem("Dados Pessoais");
 		menuItemDados.addActionListener(new ActionListener(){
