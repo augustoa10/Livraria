@@ -25,8 +25,9 @@ public class JDBCLivroDao implements LivroDao {
 			comando.setDouble(8, livro.getPrecoCusto());
 			comando.setDouble(9, livro.getMargemLucro());
 			comando.setDouble(10, livro.getEstoque());
-			comando.setString(11, livro.getEditora());
-			comando.setString(12, livro.getAutores());
+			comando.setString(11, livro.getAutores());
+			comando.setString(12, livro.getEditora());
+		
 
 			comando.execute();
 			comando.close();

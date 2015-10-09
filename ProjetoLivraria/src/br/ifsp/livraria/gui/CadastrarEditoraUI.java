@@ -20,7 +20,7 @@ public class CadastrarEditoraUI {
 		
 		//Criando o Frame para o cadastro de editora
 		final JFrame frameCadEditora = new JFrame("Cadastro de Editora");
-		frameCadEditora.setSize(400, 260);
+		frameCadEditora.setSize(390, 260);
 		frameCadEditora.setVisible(true);
 		frameCadEditora.setLocationRelativeTo(null);
 		

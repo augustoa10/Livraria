@@ -20,7 +20,7 @@ public class CadastrarAutorUI {
 	public CadastrarAutorUI(){
 
 		final JFrame frameCadAutor = new JFrame("Cadastro de Autor");
-		frameCadAutor.setSize(400,260);
+		frameCadAutor.setSize(400,460);
 		frameCadAutor.setVisible(true);
 		frameCadAutor.setLocationRelativeTo(null);
 
@@ -87,7 +87,7 @@ public class CadastrarAutorUI {
 
 				try{
 					if(txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() || txtDataFalescimento.getText().isEmpty() ||txtLocalNascimento.getText().isEmpty() ||txtLocalFalescimento.getText().isEmpty() || txtBiografia.getText().isEmpty()){
-						JOptionPane.showMessageDialog(null,"VocÃª nÃ£o preencheu todos os dados, por favor preencha novamente!");				
+						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");				
 					}
 					else
 					{
@@ -104,7 +104,7 @@ public class CadastrarAutorUI {
 						frameCadAutor.dispose();
 					}
 				}catch (Exception exp2){
-					JOptionPane.showMessageDialog(null, "Dados InvÃ¡lidos. NÃ£o foi possÃ­vel cadastrar o Autor!");
+					JOptionPane.showMessageDialog(null, "Dados Inválidos. Não foi possível cadastrar o Autor!");
 				}	
 			}
 		});
