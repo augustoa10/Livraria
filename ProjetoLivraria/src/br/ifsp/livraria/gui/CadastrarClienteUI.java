@@ -20,7 +20,7 @@ public class CadastrarClienteUI {
 
 		//Criando o Frame para o cadastro de Cliente
 		final JFrame frameCadCliente = new JFrame("Cadastro de Cliente");
-		frameCadCliente.setSize(370, 510);
+		frameCadCliente.setSize(370, 535);
 		frameCadCliente.setVisible(true);
 		frameCadCliente.setLocationRelativeTo(null);
 
@@ -100,7 +100,7 @@ public class CadastrarClienteUI {
 
 		//Criando a label EndereÃƒÂ§o
 		JLabel rotuloEndereco = new JLabel();
-		rotuloEndereco.setText("EndereÃ§o: ");
+		rotuloEndereco.setText("Endereço: ");
 		panel.add(rotuloEndereco);
 
 		final JTextField txtEndereco = new JTextField(30);
@@ -119,15 +119,15 @@ public class CadastrarClienteUI {
 				try{
 					if(txtConfirmaSenha.getText().equals(txtSenha.getText()))  {  
 					  
-						JOptionPane.showMessageDialog(null,"Senha de confirmaÃ§Ã£o correta!");   
+						JOptionPane.showMessageDialog(null,"Senha de confirmação correta!");   
 					}  
 					else  {  
-						JOptionPane.showMessageDialog(null,"Senha de confirmaÃ§Ã£o incorreta!");  
+						JOptionPane.showMessageDialog(null,"Senha de confirmação incorreta!");  
 						txtConfirmaSenha.setText("");
 					}  
 
 					if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() ||txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() || txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEndereco.getText().isEmpty()){
-						JOptionPane.showMessageDialog(null,"VocÃª nÃ£o preencheu todos os dados, por favor preencha novamente!");
+						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");
 					}
 
 					else {
@@ -149,7 +149,7 @@ public class CadastrarClienteUI {
 					}
 				}
 				catch (Exception e1) {
-					JOptionPane.showMessageDialog(null, "Dados InvÃ¡lidos. NÃ£o foi possÃ­vel cadastrar o Cliente!");
+					JOptionPane.showMessageDialog(null, "Dados Inválidos. Não foi possível cadastrar o Cliente!");
 				}	
 			}
 		});
