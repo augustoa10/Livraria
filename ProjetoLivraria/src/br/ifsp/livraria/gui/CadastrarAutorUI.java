@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import br.ifsp.livraria.bd.AutorDao;
@@ -71,7 +72,7 @@ public class CadastrarAutorUI {
 		rotuloBiografia.setText("Biografia: ");
 		panel.add(rotuloBiografia);
 
-		final JTextField txtBiografia = new JTextField(30);
+		final JTextArea txtBiografia = new JTextArea(8, 33);
 		panel.add(txtBiografia);
 
 

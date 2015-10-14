@@ -2,15 +2,17 @@ package br.ifsp.livraria.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
+import javax.swing.text.MaskFormatter;
 
 import br.ifsp.livraria.bd.JDBCLoginDao;
 import br.ifsp.livraria.bd.LoginDao;
@@ -34,7 +36,17 @@ public class LoginUI {
 		rotuloCpf.setText("CPF: ");
 		panel.add(rotuloCpf);
 
-		final JTextField txtCpf = new JTextField(30);
+		final JFormattedTextField txtCpf = new JFormattedTextField();
+		txtCpf.setColumns(30);
+		
+		MaskFormatter maskData;
+		try {
+			maskData = new MaskFormatter("###.###.###-##");
+			maskData.install( txtCpf);
+			txtCpf.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		panel.add(txtCpf);
 		
 		//Criando a label senha

@@ -105,7 +105,6 @@ public class PrincipalUI {
 		menuItemSair.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-
 			}
 		});
 		menuCadastro.add(menuItemSair);

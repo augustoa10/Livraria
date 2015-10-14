@@ -2,13 +2,17 @@ package br.ifsp.livraria.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import br.ifsp.livraria.bd.ClienteDao;
 import br.ifsp.livraria.bd.JDBCClienteDao;
@@ -20,12 +24,12 @@ public class CadastrarClienteUI {
 
 		//Criando o Frame para o cadastro de Cliente
 		final JFrame frameCadCliente = new JFrame("Cadastro de Cliente");
-		frameCadCliente.setSize(370, 535);
+		frameCadCliente.setSize(370, 640);
 		frameCadCliente.setVisible(true);
 		frameCadCliente.setLocationRelativeTo(null);
-
+		
 		JPanel panel = new JPanel();
-
+		
 		//Criando a label NOME Cliente
 		JLabel rotuloNome = new JLabel();
 		rotuloNome.setText("Nome Cliente: ");
@@ -33,7 +37,10 @@ public class CadastrarClienteUI {
 
 		final JTextField txtNome = new JTextField(30);
 		panel.add(txtNome);
-
+		
+		panel.add(rotuloNome);
+		panel.add(txtNome);
+		
 		//Criando a label Sobrenome
 		JLabel rotuloSobrenome = new JLabel();
 		rotuloSobrenome.setText("Sobrenome Cliente: ");
@@ -55,7 +62,7 @@ public class CadastrarClienteUI {
 		rotuloSenha.setText("Senha: ");
 		panel.add(rotuloSenha);
 
-		final JTextField txtSenha = new JTextField(30);
+		final JTextField txtSenha = new JPasswordField(30);
 		panel.add(txtSenha);
 
 		//Criando a label Confirmar Senha
@@ -63,15 +70,25 @@ public class CadastrarClienteUI {
 		rotuloConfirmaSenha.setText("Confirmar Senha: ");
 		panel.add(rotuloConfirmaSenha);
 
-		final JTextField txtConfirmaSenha = new JTextField(30);
+		final JTextField txtConfirmaSenha = new JPasswordField(30);
 		panel.add(txtConfirmaSenha);
 
 		//Criando a label CPF
 		JLabel rotuloCPF = new JLabel();
 		rotuloCPF.setText("CPF: ");
 		panel.add(rotuloCPF);
-
-		final JTextField txtCpf = new JTextField(30);
+		
+		final JFormattedTextField txtCpf = new JFormattedTextField();
+		txtCpf.setColumns(30);
+		
+		MaskFormatter maskData;
+		try {
+			maskData = new MaskFormatter("###.###.###-##");
+			maskData.install( txtCpf);
+			txtCpf.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		panel.add(txtCpf);
 
 		//Criando a label Sexo
@@ -87,7 +104,17 @@ public class CadastrarClienteUI {
 		rotuloData.setText("Data de Nascimento: ");
 		panel.add(rotuloData);
 
-		final JTextField txtData = new JTextField(30);
+		final JFormattedTextField txtData = new JFormattedTextField();
+		txtData.setColumns(30);
+		
+		MaskFormatter maskData2;
+		try {
+			maskData2 = new MaskFormatter("##/##/####");
+			maskData2.install(txtData);
+			txtData.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		panel.add(txtData);
 
 		//Criando a label Telefone
@@ -95,16 +122,70 @@ public class CadastrarClienteUI {
 		rotuloTelefone.setText("Telefone: ");
 		panel.add(rotuloTelefone);
 
-		final JTextField txtTelefone = new JTextField(30);
+		final JFormattedTextField txtTelefone = new JFormattedTextField();
+		txtTelefone.setColumns(30);
+		
+		MaskFormatter maskData3;
+		try {
+			maskData3 = new MaskFormatter("(##) ####-####");
+			maskData3.install(txtTelefone);
+			txtTelefone.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		panel.add(txtTelefone);
+		
+		//Criando a label Celular
+		JLabel rotuloCelular = new JLabel();
+		rotuloCelular.setText("Celular: ");
+		panel.add(rotuloCelular);
 
-		//Criando a label EndereÃƒÂ§o
+		final JFormattedTextField txtCelular = new JFormattedTextField();
+		txtCelular.setColumns(30);
+		
+		MaskFormatter maskData4;
+		try {
+			maskData4 = new MaskFormatter("(##) #.####-####");
+			maskData4.install(txtCelular);
+			txtCelular.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		panel.add(txtCelular);
+		
+		//Criando a label Endereço
 		JLabel rotuloEndereco = new JLabel();
-		rotuloEndereco.setText("Endereço: ");
+		rotuloEndereco.setText("************************** Endereço ****************************");
 		panel.add(rotuloEndereco);
-
-		final JTextField txtEndereco = new JTextField(30);
-		panel.add(txtEndereco);
+		
+		/*cidade*/
+		JLabel rotuloCidade = new JLabel();
+		rotuloCidade.setText("Cidade: ");
+		panel.add(rotuloCidade);
+		final JTextField txtCidade = new JTextField(24);
+		panel.add(txtCidade);
+		
+		/*bairro*/
+		JLabel rotuloBairro = new JLabel();
+		rotuloBairro.setText(" Bairro: ");
+		panel.add(rotuloBairro);
+		final JTextField txtBairro = new JTextField(24);
+		panel.add(txtBairro);
+		
+		/*rua*/
+		JLabel rotuloRua = new JLabel();
+		rotuloRua.setText("     Rua: ");
+		panel.add(rotuloRua);
+		final JTextField txtRua = new JTextField(24);
+		panel.add(txtRua);
+		
+		/*n° da casa*/
+		JLabel rotuloNum = new JLabel();
+		rotuloNum.setText("Número: ");
+		panel.add(rotuloNum);
+		final JTextField txtNum = new JTextField(8);
+		panel.add(txtNum);
+				
 
 		//Criando botÃƒÂ£o SALVAR
 		JButton btnSalvar = new JButton(" Salvar ");
@@ -126,7 +207,11 @@ public class CadastrarClienteUI {
 						txtConfirmaSenha.setText("");
 					}  
 
-					if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() ||txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() || txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || txtEndereco.getText().isEmpty()){
+					if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtEmail.getText().isEmpty() || 
+							txtSenha.getText().isEmpty() ||txtConfirmaSenha.getText().isEmpty() || txtCpf.getText().isEmpty() ||
+							txtSexo.getText().isEmpty() || txtData.getText().isEmpty() || txtTelefone.getText().isEmpty() || 
+							txtCelular.getText().isEmpty() || txtCidade.getText().isEmpty() || txtBairro.getText().isEmpty()|| 
+							txtRua.getText().isEmpty() || txtNum.getText().isEmpty()){
 						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");
 					}
 
@@ -140,7 +225,12 @@ public class CadastrarClienteUI {
 						cliente.setSexo(txtSexo.getText());
 						cliente.setDataNascimento(txtData.getText());
 						cliente.setTelefone(txtTelefone.getText());
-						cliente.setEndereco(txtEndereco.getText());
+						cliente.setCelular(txtCelular.getText());
+						cliente.setCidade(txtCidade.getText());
+						cliente.setBairro(txtBairro.getText());
+						cliente.setRua(txtRua.getText());
+						cliente.setNumero(txtNum.getText());
+						
 
 						cd.cadastrarCliente(cliente);
 
