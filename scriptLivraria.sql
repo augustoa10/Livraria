@@ -46,14 +46,8 @@ CREATE TABLE IF NOT EXISTS `livraria`.`Livro` (
   `margemLucro` DOUBLE NULL,
   `estoque` INT NULL,
   `autor` TEXT NOT NULL,
-  `editora` INT NOT NULL,
-  PRIMARY KEY (`idLivro`),
-  INDEX `fk_Livro_Editora1_idx` (`editora` ASC),
-  CONSTRAINT `fk_Livro_Editora1`
-    FOREIGN KEY (`editora`)
-    REFERENCES `livraria`.`Editora` (`idEditora`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `editora` varchar(50) NOT NULL,
+  PRIMARY KEY (`idLivro`))
 ENGINE = InnoDB;
 
 
@@ -71,7 +65,14 @@ CREATE TABLE IF NOT EXISTS `livraria`.`Cliente` (
   `sexo` VARCHAR(20) NULL,
   `dataNascimento` VARCHAR(15) NULL,
   `telefone` VARCHAR(30) NULL,
-  `endereco` VARCHAR(150) NULL,
+  `celular` VARCHAR(30) NULL,
+  `cidade` VARCHAR(30) NULL,
+  `bairro` VARCHAR(30) NULL,
+  `rua` VARCHAR(30) NULL,
+  `numero` VARCHAR(30) NULL,
   PRIMARY KEY (`idCliente`))
 ENGINE = InnoDB
 COMMENT = '		';
+
+
+select * from editora;
