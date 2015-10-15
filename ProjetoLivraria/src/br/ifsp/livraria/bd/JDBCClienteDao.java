@@ -12,7 +12,7 @@ public class JDBCClienteDao implements ClienteDao {
 		try{
 			Connection conexao = ConnectionFactory.createConnection();
 			
-			String sql = "insert into Cliente (nome, sobrenome, email, senha, confirmaSenha, cpf, sexo, dataNascimento, telefone, endereco) values (?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into Cliente (nome, sobrenome, email, senha, confirmaSenha, cpf, sexo, dataNascimento, telefone, celular, cidade, bairro, rua, numero) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement comando = conexao.prepareStatement(sql);
 			
 			comando.setString(1, cliente.getNome());
@@ -24,7 +24,11 @@ public class JDBCClienteDao implements ClienteDao {
 			comando.setString(7, cliente.getSexo());
 			comando.setString(8, cliente.getDataNascimento());
 			comando.setString(9, cliente.getTelefone());
-			comando.setString(10, cliente.getEndereco());
+			comando.setString(10, cliente.getCelular());
+			comando.setString(11, cliente.getCidade());
+			comando.setString(12, cliente.getBairro());
+			comando.setString(13, cliente.getRua());
+			comando.setString(14, cliente.getNumero());
 			
 			comando.execute();
 			comando.close();

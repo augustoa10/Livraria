@@ -47,9 +47,7 @@ public class DadosClienteUI {
 		txtEmail.setBounds(170, 100, 200, 20);
 		txtEmail.setDisabledTextColor(new Color(0, 0, 0));
 		txtEmail.setEnabled(false);
-		
-		
-		
+
 		JLabel lblCpf = new JLabel("CPF: ");
 		JTextField txtCpf = new JTextField(c.getCpf());
 		lblCpf.setLabelFor(txtCpf);
@@ -64,17 +62,7 @@ public class DadosClienteUI {
 		lblTelefone.setBounds(50, 180, 80, 20);
 		txtTelefone.setBounds(170, 180, 140, 20);
 		txtTelefone.setDisabledTextColor(new Color(0, 0, 0));
-		txtTelefone.setEnabled(false);
-		
-		
-		
-		JLabel lblEndereco = new JLabel("Endereço: ");
-		JTextField txtEndereco = new JTextField(c.getEndereco());
-		lblEndereco.setLabelFor(txtEndereco);
-		lblEndereco.setBounds(50, 220, 80, 20);
-		txtEndereco.setBounds(170, 220, 200, 20);
-		txtEndereco.setDisabledTextColor(new Color(0, 0, 0));
-		txtEndereco.setEnabled(false);
+		txtTelefone.setEnabled(false);		
 		
 		JLabel lblSexo = new JLabel("Sexo: ");
 		JTextField txtSexo = new JTextField(c.getSexo());
@@ -110,9 +98,6 @@ public class DadosClienteUI {
 		
 		panel.add(lblTelefone);
 		panel.add(txtTelefone);
-		
-		panel.add(lblEndereco);
-		panel.add(txtEndereco);
 		
 		panel.add(lblSexo);
 		panel.add(txtSexo);

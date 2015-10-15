@@ -33,7 +33,11 @@ public class JDBCLoginDao implements LoginDao{
 				c.setSexo(resultado.getString("sexo"));
 				c.setDataNascimento(resultado.getString("dataNascimento"));
 				c.setTelefone(resultado.getString("telefone"));
-				c.setEndereco(resultado.getString("endereco"));
+				c.setCelular(resultado.getString("celular"));
+				c.setCidade(resultado.getString("cidade"));
+				c.setBairro(resultado.getString("bairro"));
+				c.setRua(resultado.getString("rua"));
+				c.setNumero(resultado.getString("numero"));
 			}
 		
 		resultado.close();
