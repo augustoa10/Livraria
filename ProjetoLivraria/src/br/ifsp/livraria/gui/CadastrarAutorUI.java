@@ -87,7 +87,7 @@ public class CadastrarAutorUI {
 				Autor autor = new Autor();
 
 				try{
-					if(txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() || txtDataFalescimento.getText().isEmpty() ||txtLocalNascimento.getText().isEmpty() ||txtLocalFalescimento.getText().isEmpty() || txtBiografia.getText().isEmpty()){
+					if(txtNome.getText().isEmpty() || txtDataNascimento.getText().isEmpty() ||txtLocalNascimento.getText().isEmpty() || txtBiografia.getText().isEmpty()){
 						JOptionPane.showMessageDialog(null,"Você não preencheu todos os dados, por favor preencha novamente!");				
 					}
 					else

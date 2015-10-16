@@ -1,9 +1,13 @@
 package br.ifsp.livraria.gui;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.ParseException;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -11,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -90,15 +95,34 @@ public class CadastrarClienteUI {
 			e1.printStackTrace();
 		}
 		panel.add(txtCpf);
-
+		
 		//Criando a label Sexo
 		JLabel rotuloSexo = new JLabel();
 		rotuloSexo.setText("Sexo: ");
 		panel.add(rotuloSexo);
 
 		final JTextField txtSexo = new JTextField(30);
+		txtSexo.setVisible(false);
 		panel.add(txtSexo);
+		
+		JPanel painelSexo = new JPanel();
+		painelSexo.setLayout(new FlowLayout());
+		
+		ButtonGroup groupSexo = new ButtonGroup();
+		
+		JRadioButton radioButtonSexoFeminino = new JRadioButton("Feminino", false);
+		JRadioButton radioButtonSexoMasculino = new JRadioButton("Masculino", false);
 
+		groupSexo.add(radioButtonSexoFeminino);
+		groupSexo.add(radioButtonSexoMasculino);
+		
+		panel.add(radioButtonSexoFeminino);
+		panel.add(radioButtonSexoMasculino);
+		
+		//Para adequar a posição de elemento
+		JLabel jLabelNull = new JLabel("              ");
+		panel.add(jLabelNull);
+		
 		//Criando a label Data Nascimento
 		JLabel rotuloData = new JLabel();
 		rotuloData.setText("Data de Nascimento: ");
@@ -186,6 +210,32 @@ public class CadastrarClienteUI {
 		final JTextField txtNum = new JTextField(8);
 		panel.add(txtNum);
 				
+		//Listener de RadioButtonSexo
+		radioButtonSexoFeminino.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent event) {
+				int state = event.getStateChange();
+				if (state == event.SELECTED) {
+					txtSexo.setText(radioButtonSexoFeminino.getText());
+				}else if (state == event.DESELECTED) {
+					txtSexo.setText("");
+				}
+			}
+		});
+		
+		radioButtonSexoMasculino.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent event) {
+				int state = event.getStateChange();
+				if (state == event.SELECTED) {
+					txtSexo.setText(radioButtonSexoMasculino.getText());
+				}else if (state == event.DESELECTED) {
+					txtSexo.setText("");
+				}
+			}
+		});
 
 		//Criando botÃƒÂ£o SALVAR
 		JButton btnSalvar = new JButton(" Salvar ");

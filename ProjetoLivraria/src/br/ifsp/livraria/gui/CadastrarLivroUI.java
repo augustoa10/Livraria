@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,9 +22,11 @@ import javax.swing.text.NumberFormatter;
 import br.ifsp.livraria.bd.JDBCLivroDao;
 import br.ifsp.livraria.bd.LivroDao;
 import br.ifsp.livraria.pojo.Livro;
+import br.ifsp.livraria.utils.ActionCheckBoxes;
 
 public class CadastrarLivroUI {
 
+	private int NUMERO_MAX_AUTORES = 3;
 	public CadastrarLivroUI(){
 
 		final JFrame telaCadastroLivro = new JFrame("Cadastro de Livros");
@@ -81,9 +84,26 @@ public class CadastrarLivroUI {
 		JLabel rotCategoria = new JLabel("Categoria: ");
 		JTextField txtCategoria = new JTextField();
 		
-		rotCategoria.setLabelFor(txtCategoria);
+		//TODO		
+		JCheckBox checkBoxAcademico = new JCheckBox("Acadêmico");
+		JCheckBox checkBoxRomance = new JCheckBox("Romance");
+		JCheckBox checkBoxQuadrinhos = new JCheckBox("Quadrinhos");
+		JCheckBox checkBoxOutros= new JCheckBox("Outros");
+		
 		rotCategoria.setBounds(50, 180, 120, 20);
-		txtCategoria.setBounds(170, 180, 80, 20);
+		checkBoxAcademico.setBounds(170, 170, 100, 20);
+		checkBoxRomance.setBounds(170, 190, 100, 20);
+		checkBoxQuadrinhos.setBounds(280, 170, 100, 20);
+		checkBoxOutros.setBounds(280, 190, 100, 20);
+		
+		txtCategoria.setBounds(380, 170, 100, 20);
+		txtCategoria.setVisible(false);
+		
+		
+		
+		
+
+		
 
 		// Preço de Venda
 		JLabel rotPrecoVenda = new JLabel("Preço de Venda: ");
@@ -164,6 +184,17 @@ public class CadastrarLivroUI {
 		btnAutor.setBounds(450, 60, 80, 20);
 
 		// Listeners
+		
+		//Categoria Checkbox
+		
+		ActionListener actionListener = new ActionCheckBoxes();
+		checkBoxAcademico.addActionListener(actionListener);
+		checkBoxOutros.addActionListener(actionListener);
+		checkBoxQuadrinhos.addActionListener(actionListener);
+		checkBoxRomance.addActionListener(actionListener);
+		
+		
+		
 		// Salvar
 		btnSalvar.addActionListener(new ActionListener() {
 			@Override
@@ -197,23 +228,29 @@ public class CadastrarLivroUI {
 						livro.setTitulo(txtTit.getText());
 						livro.setDataPublicacao(txtDataPublica.getText());
 						livro.setEditora(txtEd.getText());
-						livro.setCategoria(txtCategoria.getText());
+						livro.setCategoria(ActionCheckBoxes.getStringBuilder().toString());
 						livro.setPrecoVenda(Double.parseDouble(txtPrecoVenda
 								.getText()));
 						livro.setResumo(txtResumo.getText());
 						livro.setIndice(txtIndice.getText());
 
-						// TODO
+							
+						StringBuilder autores = new StringBuilder();
 
 						if (!txtAut.getText().isEmpty()) {
-							livro.setAutores(txtAut.getText());
+							autores.append(txtAut.getText());
 						}
 						if (!txtAut2.getText().isEmpty()) {
-							livro.setAutores(" - "+txtAut2.getText());
+							autores.append(" - "+txtAut2.getText());
 						}
 						if (!txtAut3.getText().isEmpty()) {
-							livro.setAutores(" - "+txtAut3.getText());
+							autores.append(" - "+txtAut3.getText());
 						}
+
+						livro.setAutores(autores.toString());
+							
+						
+						
 
 
 						livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
@@ -282,6 +319,11 @@ public class CadastrarLivroUI {
 		painelCadLivro.add(txtDataPublica);
 
 		painelCadLivro.add(rotCategoria);
+		painelCadLivro.add(checkBoxAcademico);
+		painelCadLivro.add(checkBoxRomance);
+		painelCadLivro.add(checkBoxQuadrinhos);
+		painelCadLivro.add(checkBoxOutros);
+		
 		painelCadLivro.add(txtCategoria);
 
 		painelCadLivro.add(rotPrecoVenda);
@@ -327,3 +369,4 @@ public class CadastrarLivroUI {
 	}
 
 }
+
