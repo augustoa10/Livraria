@@ -26,7 +26,6 @@ public class PrincipalUI {
 		final JFrame frame = new JFrame("Sistema para Livraria");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 400);
-		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		
 		// background image and icon
@@ -113,7 +112,11 @@ public class PrincipalUI {
 		menuBar.add(menuCadastro);
 		menuBar.add(menuRelatorio);
 		
+		
 		//Adicionando o JMenuBar no JFrame
 		frame.setJMenuBar(menuBar);
+		menuBar.setVisible(true);
+		frame.setVisible(true);
+		
 	}
 }

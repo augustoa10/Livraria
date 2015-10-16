@@ -63,7 +63,7 @@ public class LoginUI {
 			//Tratamento do botão Entrar
 			public void actionPerformed(ActionEvent e) {
 	
-			LoginDao log = new JDBCLoginDao();
+			LoginDao loginDao = new JDBCLoginDao();
 			String cpf;
 			String senha;
 	
@@ -76,11 +76,11 @@ public class LoginUI {
 					cpf=txtCpf.getText();
 					senha=txtSenha.getText();
 	
-					if(log.validarCliente(cpf, senha)){
+					if(loginDao.validarCliente(cpf, senha)){
 						
 						frame.dispose();
 						PrincipalUI menu = new PrincipalUI();
-						menu.menuPrincipal(log.montarCliente(cpf));
+						menu.menuPrincipal(loginDao.montarCliente(cpf));
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Login ou senha inválidos!");
@@ -116,5 +116,8 @@ public class LoginUI {
 			panel.add(btnSair);
 			
 			frame.setContentPane(panel);
+			panel.setVisible(true);
+			frame.setVisible(true);
+			frame.setResizable(false);
 		}
 }
