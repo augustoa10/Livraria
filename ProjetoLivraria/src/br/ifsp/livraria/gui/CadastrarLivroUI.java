@@ -26,6 +26,7 @@ import br.ifsp.livraria.utils.ActionCheckBoxes;
 
 public class CadastrarLivroUI {
 
+	private int NUMERO_MAX_AUTORES = 3;
 	public CadastrarLivroUI(){
 
 		final JFrame telaCadastroLivro = new JFrame("Cadastro de Livros");
@@ -96,7 +97,7 @@ public class CadastrarLivroUI {
 		checkBoxOutros.setBounds(280, 190, 100, 20);
 		
 		txtCategoria.setBounds(380, 170, 100, 20);
-		txtCategoria.setVisible(true);
+		txtCategoria.setVisible(false);
 		
 		
 		
@@ -233,17 +234,23 @@ public class CadastrarLivroUI {
 						livro.setResumo(txtResumo.getText());
 						livro.setIndice(txtIndice.getText());
 
-						// TODO
+							
+						StringBuilder autores = new StringBuilder();
 
 						if (!txtAut.getText().isEmpty()) {
-							livro.setAutores(txtAut.getText());
+							autores.append(txtAut.getText());
 						}
 						if (!txtAut2.getText().isEmpty()) {
-							livro.setAutores(" - "+txtAut2.getText());
+							autores.append(" - "+txtAut2.getText());
 						}
 						if (!txtAut3.getText().isEmpty()) {
-							livro.setAutores(" - "+txtAut3.getText());
+							autores.append(" - "+txtAut3.getText());
 						}
+
+						livro.setAutores(autores.toString());
+							
+						
+						
 
 
 						livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
