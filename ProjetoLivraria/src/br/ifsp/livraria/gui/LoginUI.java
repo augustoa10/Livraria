@@ -1,9 +1,13 @@
 package br.ifsp.livraria.gui;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -25,11 +29,17 @@ public class LoginUI {
 		//Criando frame
 		final JFrame frame = new JFrame("Sistema para Livraria - Login");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 400);
+		frame.setSize(300, 130);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
+		
+		//icon
+		Image icon = Toolkit.getDefaultToolkit().getImage("javalib\\login.gif");
+		frame.setIconImage(icon);
+		
+		frame.validate();
 		
 		//Criando a label cpf
 		JLabel rotuloCpf= new JLabel();
@@ -37,7 +47,7 @@ public class LoginUI {
 		panel.add(rotuloCpf);
 
 		final JFormattedTextField txtCpf = new JFormattedTextField();
-		txtCpf.setColumns(30);
+		txtCpf.setColumns(20);
 		
 		MaskFormatter maskData;
 		try {
@@ -54,7 +64,7 @@ public class LoginUI {
 		rotuloSenha.setText("Senha: ");
 		panel.add(rotuloSenha);
 
-		final JTextField txtSenha = new JPasswordField(30);
+		final JTextField txtSenha = new JPasswordField(20);
 		panel.add(txtSenha);
 		
 		JButton btnEntrar = new JButton(" Entrar ");
