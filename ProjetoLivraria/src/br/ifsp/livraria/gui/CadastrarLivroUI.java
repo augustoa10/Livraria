@@ -214,8 +214,7 @@ public class CadastrarLivroUI {
 							|| txtPrecoCusto.getText().isEmpty()
 							|| txtPrecoVenda.getText().isEmpty()
 							|| txtResumo.getText().isEmpty()
-							|| txtTit.getText().isEmpty()
-							|| txtCategoria.getText().isEmpty()){
+							|| txtTit.getText().isEmpty()){
 						JOptionPane
 						.showMessageDialog(null,
 								"Você não preencheu todos os dados, por favor preencha novamente!");
