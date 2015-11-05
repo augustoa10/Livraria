@@ -2,14 +2,17 @@ package br.ifsp.livraria.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import br.ifsp.livraria.bd.AutorDao;
 import br.ifsp.livraria.bd.JDBCAutorDao;
@@ -40,7 +43,17 @@ public class CadastrarAutorUI {
 		rotuloDataNascimento.setText("Data do Nascimento: ");
 		panel.add(rotuloDataNascimento);
 
-		final JTextField txtDataNascimento = new JTextField(30);
+		final JFormattedTextField txtDataNascimento = new JFormattedTextField();
+		txtDataNascimento.setColumns(30);
+		
+		MaskFormatter maskData;
+		try {
+			maskData = new MaskFormatter("##/##/####");
+			maskData.install(txtDataNascimento);
+			txtDataNascimento.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		panel.add(txtDataNascimento);
 
 		//Criando a label Data do Falescimento
@@ -48,7 +61,17 @@ public class CadastrarAutorUI {
 		rotuloDataFalescimento.setText("Data do Falescimento: ");
 		panel.add(rotuloDataFalescimento);
 
-		final JTextField txtDataFalescimento = new JTextField(30);
+		final JFormattedTextField txtDataFalescimento = new JFormattedTextField();
+		txtDataFalescimento.setColumns(30);
+		
+		MaskFormatter maskData1;
+		try {
+			maskData1 = new MaskFormatter("##/##/####");
+			maskData1.install(txtDataFalescimento);
+			txtDataFalescimento.setCaretPosition(0);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		panel.add(txtDataFalescimento);
 
 		//Criando a label Local do Nascimento

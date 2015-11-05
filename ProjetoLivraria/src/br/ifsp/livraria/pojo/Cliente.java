@@ -40,9 +40,7 @@ public class Cliente {
 		}
 		public void setNumero(String numero) {
 			this.numero = numero;
-		}
-			
-		
+		}		
 		public String getCelular() {
 			return celular;
 		}

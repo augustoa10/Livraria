@@ -281,7 +281,6 @@ public class CadastrarClienteUI {
 						cliente.setRua(txtRua.getText());
 						cliente.setNumero(txtNum.getText());
 						
-
 						cd.cadastrarCliente(cliente);
 
 						JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso!");

@@ -1,14 +1,17 @@
 package br.ifsp.livraria.gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,8 +22,14 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
+import br.ifsp.livraria.bd.AutorDao;
+import br.ifsp.livraria.bd.EditoraDao;
+import br.ifsp.livraria.bd.JDBCAutorDao;
+import br.ifsp.livraria.bd.JDBCEditoraDao;
 import br.ifsp.livraria.bd.JDBCLivroDao;
 import br.ifsp.livraria.bd.LivroDao;
+import br.ifsp.livraria.pojo.Autor;
+import br.ifsp.livraria.pojo.Editora;
 import br.ifsp.livraria.pojo.Livro;
 import br.ifsp.livraria.utils.ActionCheckBoxes;
 
@@ -53,18 +62,54 @@ public class CadastrarLivroUI {
 		rotISBN.setBounds(50, 20, 80, 20);
 		txtISBN.setBounds(170, 20, 80, 20);
 
+		//TITULO
 		JLabel rotTit = new JLabel("Titulo: ");
 		JTextField txtTit = new JTextField(100);
 		rotTit.setLabelFor(txtTit);
 		rotTit.setBounds(50, 60, 80, 20);
 		txtTit.setBounds(170, 60, 200, 20);
-
+		
+		//EDITORA
 		JLabel rotEd = new JLabel("Editora: ");
-		JTextField txtEd = new JTextField(100);
-		rotEd.setLabelFor(txtEd);
+		
+		EditoraDao ed = new JDBCEditoraDao();
+		final ArrayList<Editora> array = ed.obterEditora();
+		
+		final String[] itensEditora = new String[array.size()];
+		
+		for(int i=0 ; i<array.size() ; i++){
+			Editora editora = (Editora) array.get(i);
+			itensEditora[i] = editora.getNomeEditora();
+		}
+		
+		final JComboBox<String> comboEditora = new JComboBox<String> (itensEditora);
+		comboEditora.setSelectedIndex(-1);
+		rotEd.setLabelFor(comboEditora);
 		rotEd.setBounds(50, 100, 80, 20);
-		txtEd.setBounds(170, 100, 80, 20);
-
+		comboEditora.setBounds(170, 100, 200, 20);
+		
+		
+		//AUTOR
+		JLabel rotAu = new JLabel("Autor: ");
+		
+		AutorDao ad = new JDBCAutorDao();
+		final ArrayList<Autor> array2 = ad.obterAutor();
+		
+		final String[] itensAutor = new String[array2.size()];
+		
+		for(int i=0 ; i<array2.size() ; i++){
+			Autor autor = (Autor) array2.get(i);
+			itensAutor[i] = autor.getNomeAutor();
+		}
+		
+		final JComboBox<String> comboAutor = new JComboBox<String> (itensAutor);
+		comboAutor.setSelectedIndex(-1);
+		
+		rotAu.setLabelFor(comboAutor);
+		rotAu.setBounds(450, 100, 80, 20);
+		comboAutor.setBounds(510, 100, 200, 20);
+		
+		//Data Publicação
 		JLabel rotDataPublica = new JLabel("Data de Publicação: ");
 		JFormattedTextField txtDataPublica = new JFormattedTextField();
 		rotDataPublica.setLabelFor(txtDataPublica);
@@ -98,12 +143,7 @@ public class CadastrarLivroUI {
 		
 		txtCategoria.setBounds(380, 170, 100, 20);
 		txtCategoria.setVisible(false);
-		
-		
-		
-		
 
-		
 
 		// Preço de Venda
 		JLabel rotPrecoVenda = new JLabel("Preço de Venda: ");
@@ -156,33 +196,6 @@ public class CadastrarLivroUI {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(240, 660, 90, 20);
 
-		// Autores
-		JLabel rotAut = new JLabel("Autor: ");
-		JTextField txtAut = new JTextField(100);
-		rotAut.setLabelFor(txtAut);
-		rotAut.setBounds(450, 20, 80, 20);
-		txtAut.setBounds(570, 20, 200, 20);
-
-		JLabel rotAut2 = new JLabel("Autor: ");
-		JTextField txtAut2 = new JTextField(100);
-		rotAut2.setLabelFor(txtAut2);
-		rotAut2.setBounds(450, 60, 80, 20);
-		txtAut2.setBounds(570, 60, 200, 20);
-		rotAut2.setVisible(false);
-		txtAut2.setVisible(false);
-
-		JLabel rotAut3 = new JLabel("Autor: ");
-		JTextField txtAut3 = new JTextField(100);
-		rotAut3.setLabelFor(txtAut3);
-		rotAut3.setBounds(450, 100, 80, 20);
-		txtAut3.setBounds(570, 100, 200, 20);
-		rotAut3.setVisible(false);
-		txtAut3.setVisible(false);
-
-		// Button Autor
-		JButton btnAutor = new JButton("+ Autor");
-		btnAutor.setBounds(450, 60, 80, 20);
-
 		// Listeners
 		
 		//Categoria Checkbox
@@ -203,9 +216,7 @@ public class CadastrarLivroUI {
 				Livro livro = new Livro();
 
 				try {
-					if (txtAut.getText().isEmpty()
-							|| txtDataPublica.getText().isEmpty()
-							|| txtEd.getText().isEmpty()
+					if (	txtDataPublica.getText().isEmpty()
 							|| txtEstoque.getText().isEmpty()
 							|| txtIndice.getText().isEmpty()
 							|| txtISBN.getText().isEmpty()
@@ -223,35 +234,26 @@ public class CadastrarLivroUI {
 					else {
 						System.out.println("");
 
-						livro.setIsbn(txtISBN.getText());
+						livro.setIsbn(Integer.parseInt(txtISBN.getText()));
 						livro.setTitulo(txtTit.getText());
 						livro.setDataPublicacao(txtDataPublica.getText());
-						livro.setEditora(txtEd.getText());
+						
+						/*int index = comboEditora.getSelectedIndex();
+						Editora editora = (Editora) array.get(index);
+						livro.setIdEditora(editora.getIdEditora());*/
+						
 						livro.setCategoria(ActionCheckBoxes.getStringBuilder().toString());
-						livro.setPrecoVenda(Double.parseDouble(txtPrecoVenda
-								.getText()));
+						livro.setPrecoVenda(Double.parseDouble(txtPrecoVenda.getText()));
 						livro.setResumo(txtResumo.getText());
 						livro.setIndice(txtIndice.getText());
-
-							
-						StringBuilder autores = new StringBuilder();
-
-						if (!txtAut.getText().isEmpty()) {
-							autores.append(txtAut.getText());
-						}
-						if (!txtAut2.getText().isEmpty()) {
-							autores.append(" - "+txtAut2.getText());
-						}
-						if (!txtAut3.getText().isEmpty()) {
-							autores.append(" - "+txtAut3.getText());
-						}
-
-						livro.setAutores(autores.toString());
-							
 						
+						/*int index2 = comboAutor.getSelectedIndex();
+						Autor autor = (Autor) array2.get(index2);
+						livro.setIdAutor(autor.getIdAutor());*/
 						
-
-
+						livro.setIdEditora(comboEditora.getSelectedIndex());
+						livro.setIdAutor(comboAutor.getSelectedIndex());
+						
 						livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
 						livro.setMargemLucro(Double.parseDouble(txtMargemDeLucro.getText()));
 						livro.setEstoque(Integer.parseInt(txtEstoque.getText()));
@@ -277,30 +279,14 @@ public class CadastrarLivroUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				txtAut.setText("");
+		
 				txtDataPublica.setText("");
-				txtEd.setText("");
+				
 				txtISBN.setText("");
 				txtTit.setText("");
 				txtCategoria.setText("");
 
 				telaCadastroLivro.dispose();
-			}
-		});
-		// Acrescentar Autor
-		btnAutor.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (!txtAut2.isVisible()) {
-					rotAut2.setVisible(true);
-					txtAut2.setVisible(true);
-					btnAutor.setBounds(450, 100, 80, 20);
-				} else {
-					rotAut3.setVisible(true);
-					txtAut3.setVisible(true);
-					btnAutor.setVisible(false);
-				}
 			}
 		});
 
@@ -312,7 +298,7 @@ public class CadastrarLivroUI {
 		painelCadLivro.add(txtTit);
 
 		painelCadLivro.add(rotEd);
-		painelCadLivro.add(txtEd);
+		painelCadLivro.add(comboEditora);
 
 		painelCadLivro.add(rotDataPublica);
 		painelCadLivro.add(txtDataPublica);
@@ -343,17 +329,8 @@ public class CadastrarLivroUI {
 		painelCadLivro.add(rotIndice);
 		painelCadLivro.add(txtIndice);
 
-		painelCadLivro.add(rotAut);
-		painelCadLivro.add(txtAut);
-
-		painelCadLivro.add(rotAut2);
-		painelCadLivro.add(txtAut2);
-
-		painelCadLivro.add(rotAut3);
-		painelCadLivro.add(txtAut3);
-
-		painelCadLivro.add(btnAutor);
-		painelCadLivro.add(btnAutor);
+		painelCadLivro.add(rotAu);
+		painelCadLivro.add(comboAutor);
 
 		// Add buttons
 		painelCadLivro.add(btnSalvar);
@@ -364,7 +341,6 @@ public class CadastrarLivroUI {
 		telaCadastroLivro.add(painelCadLivro);
 		painelCadLivro.setVisible(true);
 		telaCadastroLivro.setVisible(true);
-		telaCadastroLivro.setResizable(false);
 	}
 
 }

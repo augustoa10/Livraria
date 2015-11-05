@@ -3,27 +3,25 @@ package br.ifsp.livraria.pojo;
 public class Livro {
 
 	//Todos os usuários
-	private String isbn;
-	
+	private int isbn;
 	private String titulo;
 	private String dataPublicacao; 
-	private String editora; 
+	private int idEditora; 
 	private String categoria; //Originalmente String
 	private double precoVenda;
 	private String resumo;
 	private String indice; //capítulos todos numerados
-	
-	private String autores;
+	private int idAutor;
 	
 	//Somente usuários internos
 	private double precoCusto;
 	private double margemLucro;
 	private int estoque;
 	
-	public String getIsbn() {
+	public int getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(String isbn) {
+	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
 	public String getTitulo() {
@@ -38,11 +36,11 @@ public class Livro {
 	public void setDataPublicacao(String dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
-	public String getEditora() {
-		return editora;
+	public int getIdEditora() {
+		return idEditora;
 	}
-	public void setEditora(String editora) {
-		this.editora = editora;
+	public void setIdEditora(int idEditora) {
+		this.idEditora = idEditora;
 	}
 	public String getCategoria() {
 		return categoria;
@@ -68,11 +66,11 @@ public class Livro {
 	public void setIndice(String indice) {
 		this.indice = indice;
 	}
-	public String getAutores() {
-		return autores;
+	public int getIdAutor() {
+		return idAutor;
 	}
-	public void setAutores(String autores) {
-		this.autores = autores;
+	public void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
 	}
 	public double getPrecoCusto() {
 		return precoCusto;
