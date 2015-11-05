@@ -3,6 +3,7 @@ package br.ifsp.livraria.pojo;
 public class Autor {
 
 	// Atributos Autor
+	private int idAutor;
 	private String nomeAutor;
 	private String dataNascimento;
 	private String dataFalescimento;
@@ -11,7 +12,12 @@ public class Autor {
 	private String biografia;
 
 	//Getters and Setters
-
+	public int getIdAutor() {
+		return idAutor;
+	}
+	public void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
+	}
 	public String getNomeAutor() {
 		return nomeAutor;
 	}

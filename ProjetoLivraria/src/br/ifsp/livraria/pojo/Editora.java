@@ -2,11 +2,18 @@ package br.ifsp.livraria.pojo;
 
 public class Editora {
 
+	private int idEditora;
 	private String nomeEditora;
 	private String endereco;
 	private String telefone;
 	private String cnpj;
 	
+	public int getIdEditora() {
+		return idEditora;
+	}
+	public void setIdEditora(int idEditora) {
+		this.idEditora = idEditora;
+	}
 	public String getNomeEditora() {
 		return nomeEditora;
 	}

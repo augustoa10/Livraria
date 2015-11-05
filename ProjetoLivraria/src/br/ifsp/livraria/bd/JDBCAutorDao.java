@@ -3,6 +3,9 @@ package br.ifsp.livraria.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.ifsp.livraria.pojo.Autor;
 
@@ -30,6 +33,43 @@ public class JDBCAutorDao implements AutorDao{
 		catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public ArrayList<Autor> obterAutor() {
+		
+		try{
+			Connection conexao = ConnectionFactory.createConnection();
+			
+			String sql = "select * from autor";
+			
+			PreparedStatement comando = conexao.prepareStatement(sql);
+			
+			ResultSet resultado = comando.executeQuery();
+			
+			ArrayList<Autor> listaAutor = new ArrayList<Autor>();
+						
+			while(resultado.next()){
+				Autor autor = new Autor();
+				autor.setNomeAutor(resultado.getString("nome"));
+				autor.setDataNascimento(resultado.getString("dataNascimento"));
+				autor.setDataFalescimento(resultado.getString("dataFalecimento"));
+				autor.setLocalNascimento(resultado.getString("localNascimento"));
+				autor.setLocalFalescimento(resultado.getString("localFalecimento"));
+				autor.setBiografia(resultado.getString("biografia"));
+				
+				listaAutor.add(autor);
+				
+				
+			}
+			conexao.close();
+			return listaAutor;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}		
+		
 	}
 
 }
