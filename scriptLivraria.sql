@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS Livro (
   isbn INT NULL,
   titulo VARCHAR(50) NULL,
   dataPublicacao VARCHAR(15) NULL,
-  categoria VARCHAR(40) NULL,
   precoVenda DOUBLE NULL,
   resumo TEXT NULL,
   indice TEXT NULL,
