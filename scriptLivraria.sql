@@ -98,3 +98,6 @@ CREATE TABLE IF NOT EXISTS Cliente (
   PRIMARY KEY (idCliente))
 ENGINE = InnoDB;
 
+
+
+
