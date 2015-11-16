@@ -39,15 +39,14 @@ public class PrincipalUI {
 		
 		frame.validate(); 
 		
-		// Cria��o da barra de menu
+		// Criando barra de menu
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));	
 		
-		// Cria��o de Menus
+		// Criando Menus
 		JMenu menuCadastro = new JMenu("Cadastro");
-		JMenu menuRelatorio = new JMenu("Relatorios");
-		
-		// Cria��o dos submenus de Cadastro
+				
+		// Criando submenus de Cadastro
 		// Cadastrar Livro
 		JMenuItem menuItemLivros = new JMenuItem("Livros");
 		menuItemLivros.addActionListener(new ActionListener(){
@@ -57,7 +56,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemLivros);
 		
-		// Cria��o dos submenus de Cadastro
+		// Criando submenus de Cadastro
 		// Cadastrar Autor
 		JMenuItem menuItemAutor = new JMenuItem("Autores");
 		menuItemAutor.addActionListener(new ActionListener(){
@@ -67,7 +66,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemAutor);
 		
-		// Cria��o dos submenus de Cadastro
+		// Criando submenus de Cadastro
 		// Cadastrar Editora
 		JMenuItem menuItemEditora = new JMenuItem("Editoras");
 		menuItemEditora.addActionListener(new ActionListener(){
@@ -77,7 +76,7 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemEditora);
 		
-		// Cria��o dos submenus de Cadastro
+		// Criando submenus de Cadastro
 		// Cadastrar Cliente
 		JMenuItem menuItemCliente = new JMenuItem("Clientes");
 		menuItemCliente.addActionListener(new ActionListener(){
@@ -88,7 +87,7 @@ public class PrincipalUI {
 		menuCadastro.add(menuItemCliente);
 		menuCadastro.addSeparator();
 		
-		// Cria��o dos submenus de Cadastro
+		// Criando submenus de Cadastro
 		// Perfil do cliente
 		JMenuItem menuItemDados = new JMenuItem("Dados Pessoais");
 		menuItemDados.addActionListener(new ActionListener(){
@@ -108,9 +107,30 @@ public class PrincipalUI {
 		});
 		menuCadastro.add(menuItemSair);
 		
+		//criando menu Compra
+		JMenu menuCompra = new JMenu("Compra");
+		
+		// Pesquisa de Livro
+		JMenuItem menuPesquisaLivros = new JMenuItem("Pesquisar Livros");
+		menuPesquisaLivros.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0) {		
+				new PesquisarLivroUI();		
+			}	
+		});
+		menuCompra.add(menuPesquisaLivros);
+		
+		// Cadastrar Autor
+		JMenuItem menuVerCarrinho = new JMenuItem("Visualizar Carrinho");
+		menuVerCarrinho.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0) {		
+				//new VisualizarCarrinhoUI();		
+			}	
+		});
+		menuCompra.add(menuVerCarrinho);
+		
 		//Adicionando Jmenu no JmenuBar
 		menuBar.add(menuCadastro);
-		menuBar.add(menuRelatorio);
+		menuBar.add(menuCompra);
 		
 		
 		//Adicionando o JMenuBar no JFrame
