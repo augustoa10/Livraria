@@ -58,9 +58,7 @@ public class JDBCAutorDao implements AutorDao{
 				autor.setLocalFalescimento(resultado.getString("localFalecimento"));
 				autor.setBiografia(resultado.getString("biografia"));
 				
-				listaAutor.add(autor);
-				
-				
+				listaAutor.add(autor);	
 			}
 			conexao.close();
 			return listaAutor;

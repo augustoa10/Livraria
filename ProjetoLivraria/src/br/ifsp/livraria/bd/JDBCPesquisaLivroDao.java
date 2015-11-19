@@ -20,7 +20,7 @@ public class JDBCPesquisaLivroDao implements PesquisaLivroDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a on a.idAutor = l.idLivro where l.titulo = ?");			
+			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a using (idAutor) where l.titulo = ?");			
 			stmt.setString(1, titulo);
 			rs = stmt.executeQuery();
 		
@@ -60,7 +60,7 @@ public class JDBCPesquisaLivroDao implements PesquisaLivroDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a on a.idAutor = l.idLivro where a.nome = ?");			
+			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a using ( idAutor ) where a.nome = ?");			
 			stmt.setString(1, autor);
 			rs = stmt.executeQuery();
 		

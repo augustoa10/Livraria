@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -58,6 +60,16 @@ public class CadastrarLivroUI {
 		// Tratamento isbn
 		JLabel rotISBN = new JLabel("ISBN: ");
 		JTextField txtISBN = new JTextField();
+		
+		// Código para inserir apenas números
+		txtISBN.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent ev){
+				String carac = "0987654321";
+				if(!carac.contains(ev.getKeyChar()+ "")){
+					ev.consume();
+				}
+			}
+		});
 		rotISBN.setLabelFor(txtISBN);
 		rotISBN.setBounds(50, 20, 80, 20);
 		txtISBN.setBounds(170, 20, 80, 20);
@@ -218,6 +230,8 @@ public class CadastrarLivroUI {
 				try {
 					if (	txtDataPublica.getText().isEmpty()
 							|| txtEstoque.getText().isEmpty()
+							|| comboAutor.getSelectedIndex() == -1
+							|| comboEditora.getSelectedIndex() == 1
 							|| txtIndice.getText().isEmpty()
 							|| txtISBN.getText().isEmpty()
 							|| txtMargemDeLucro.getText().isEmpty()
@@ -251,8 +265,8 @@ public class CadastrarLivroUI {
 						Autor autor = (Autor) array2.get(index2);
 						livro.setIdAutor(autor.getIdAutor());*/
 						
-						livro.setIdEditora(comboEditora.getSelectedIndex());
-						livro.setIdAutor(comboAutor.getSelectedIndex());
+						livro.setIdEditora(comboEditora.getSelectedIndex()+1);
+						livro.setIdAutor(comboAutor.getSelectedIndex()+1);
 						
 						livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
 						livro.setMargemLucro(Double.parseDouble(txtMargemDeLucro.getText()));
@@ -342,6 +356,5 @@ public class CadastrarLivroUI {
 		painelCadLivro.setVisible(true);
 		telaCadastroLivro.setVisible(true);
 	}
-
 }
 
