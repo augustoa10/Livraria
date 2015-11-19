@@ -1,23 +1,6 @@
-DROP DATABASE IF EXISTS livraria;
+ DROP DATABASE IF EXISTS livraria;
 CREATE SCHEMA IF NOT EXISTS livraria DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE livraria ;
-
--- -----------------------------------------------------
--- Table `livraria`.`Livro`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Livro (
-  idLivro INT NOT NULL AUTO_INCREMENT,
-  isbn INT NULL,
-  titulo VARCHAR(50) NULL,
-  dataPublicacao VARCHAR(15) NULL,
-  precoVenda DOUBLE NULL,
-  resumo TEXT NULL,
-  indice TEXT NULL,
-  precoCusto DOUBLE NULL,
-  margemLucro DOUBLE NULL,
-  estoque INT NULL,
-  PRIMARY KEY (idLivro))
-ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `livraria`.`Autor`
@@ -46,36 +29,27 @@ CREATE TABLE IF NOT EXISTS Editora (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `livraria`.`Categoria`
+-- Table `livraria`.`Livro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Categoria (
-  idCategoria INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(120) NULL,
-  PRIMARY KEY (idCategoria))
+CREATE TABLE IF NOT EXISTS Livro (
+  idLivro INT NOT NULL AUTO_INCREMENT,
+  idAutor INT NOT NULL,
+  idEditora INT NOT NULL,
+  isbn INT NULL,
+  titulo VARCHAR(50) NULL,
+  dataPublicacao VARCHAR(15) NULL,
+  categoria VARCHAR(200) NULL,
+  precoVenda DOUBLE NULL,
+  resumo TEXT NULL,
+  indice TEXT NULL,
+  precoCusto DOUBLE NULL,
+  margemLucro DOUBLE NULL,
+  estoque INT NULL,
+
+  PRIMARY KEY (idLivro),
+  FOREIGN KEY (idAutor) REFERENCES Autor (idAutor),
+  FOREIGN KEY (idEditora) REFERENCES Editora (idEditora))
 ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `Livro_has_Autor`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Livro_has_Autor (
-  Livro_idLivro 	INT NOT NULL,
-  Autor_idAutor 	INT NOT NULL,
-  PRIMARY KEY (Livro_idLivro, Autor_idAutor),
-  FOREIGN KEY (Livro_idLivro) REFERENCES Livro (idLivro),
-  FOREIGN KEY (Autor_idAutor) REFERENCES Autor (idAutor))
-  ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `Livro_has_Categoria`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Livro_has_Categoria (
-  Livro_idLivro 			INT NOT NULL,
-  Categoria_idCategoria 	INT NOT NULL,
-  PRIMARY KEY (Livro_idLivro, Categoria_idCategoria),
-  FOREIGN KEY (Livro_idLivro) REFERENCES Livro (idLivro),
-  FOREIGN KEY (Categoria_idCategoria) REFERENCES Categoria (idCategoria))
-  ENGINE = InnoDB;
-
 -- -----------------------------------------------------
 -- Table `livraria`.`Cliente`
 -- -----------------------------------------------------
