@@ -15,8 +15,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import br.ifsp.livraria.bd.JDBCDetalhesLivroDao;
 import br.ifsp.livraria.bd.JDBCPesquisaLivroDao;
 import br.ifsp.livraria.bd.PesquisaLivroDao;
+import br.ifsp.livraria.pojo.DetalhesLivro;
 import br.ifsp.livraria.pojo.PesquisaLivro;
 
 public class PesquisarLivroUI {
@@ -63,7 +65,9 @@ public class PesquisarLivroUI {
 								PesquisaLivroDao pdt = new JDBCPesquisaLivroDao();
 								ArrayList<PesquisaLivro> LivroTitulo = new ArrayList<PesquisaLivro>();
 								LivroTitulo = pdt.listaLivroTitulo(txtNome.getText());
-				
+								
+								limpaTable(modelo);
+								
 								for (PesquisaLivro livro: LivroTitulo){
 									Object[] linha = new Object[]{String.valueOf(livro.getTitulo()), livro.getAutor(), livro.getPrecoVenda()};
 									modelo.addRow(linha);
@@ -76,6 +80,8 @@ public class PesquisarLivroUI {
 								ArrayList<PesquisaLivro> LivroAutor = new ArrayList<PesquisaLivro>();
 								LivroAutor = pda.listaLivroAutor(txtNome.getText());
 				
+								limpaTable(modelo);
+								
 								for (PesquisaLivro livro: LivroAutor){
 									Object[] linha = new Object[]{String.valueOf(livro.getTitulo()), livro.getAutor(), livro.getPrecoVenda()};
 									modelo.addRow(linha);
@@ -100,7 +106,11 @@ public class PesquisarLivroUI {
 					return; //Não tem nada selecionado
 				}
 				else {
-					//colocar a chamada para tela DETALHES DO LIVRO que o raul está fazendo
+					//chamada para tela DETALHES DO LIVRO 
+					String titulo = tabela.getValueAt(selecionada, 0).toString();
+					JDBCDetalhesLivroDao detalhesLivroDao = new JDBCDetalhesLivroDao();
+					DetalhesLivro detalhesLivro = detalhesLivroDao.pesquisaDetalhesLivro(titulo);
+					DetalhesLivroUI detalhesUI = new DetalhesLivroUI(detalhesLivro);
 				}
 			
 			}
@@ -111,4 +121,12 @@ public class PesquisarLivroUI {
 		framePesquisaLivro.setContentPane(panel);
 	}
 	
+	private void limpaTable (DefaultTableModel modelo){
+		int limitRow = modelo.getRowCount();
+		if (limitRow!=0){
+			for (int i = 0; i < limitRow; i++) {
+				modelo.removeRow(0);
+			}
+		}
+	}
 }
