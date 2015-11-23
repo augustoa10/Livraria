@@ -90,25 +90,10 @@ public class DetalhesLivroUI{
 	        cons.gridx = 1;
 			container.add(new JTextArea(detalhesLivro.getNomeEditora()),cons);
 			
-			JScrollPane barraRolagem = new JScrollPane();
-			
-			barraRolagem.add(container);
-			
-			frameDetalhesLivro.getContentPane().add(barraRolagem,cons);
 			
 			
 		}
 			
-//		frameDetalhesLivro.add(container);
-	    
-	    
-		
-		
-		// CRIAR TABELA ************************************************************************
-				
-//		JTable tabela = new JTable(modelo);
-		
-//		panel.add(barraRolagem);
 	}
 	
 
