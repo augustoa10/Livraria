@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class AtualizarCarrinho extends JFrame {
+public class AtualizarCarrinhoUI extends JFrame {
 
 	private DefaultTableModel listaCarrinho = new DefaultTableModel();
 	private JPanel painelFundo;
@@ -25,7 +25,7 @@ public class AtualizarCarrinho extends JFrame {
 
 	private int linhaSelecionada;
 
-	public AtualizarCarrinho(DefaultTableModel tabelaCarrinho, String[] dados, int linha) {
+	public AtualizarCarrinhoUI(DefaultTableModel tabelaCarrinho, String[] dados, int linha) {
 		super("Alterar Qtde do Livro '" + dados[1] +"'");
 		criaJanela();
 		listaCarrinho = tabelaCarrinho;
@@ -58,9 +58,9 @@ public class AtualizarCarrinho extends JFrame {
 		setSize(500, 175);
 		setVisible(true);
 
-		btSalvar.addActionListener(new AtualizarCarrinho.BtSalvarListener());
-		btLimpar.addActionListener(new AtualizarCarrinho.BtLimparListener());
-		btCancelar.addActionListener(new AtualizarCarrinho.BtCancelarListener());
+		btSalvar.addActionListener(new AtualizarCarrinhoUI.BtSalvarListener());
+		btLimpar.addActionListener(new AtualizarCarrinhoUI.BtLimparListener());
+		btCancelar.addActionListener(new AtualizarCarrinhoUI.BtCancelarListener());
 	}
 
 	private class BtSalvarListener implements ActionListener {
