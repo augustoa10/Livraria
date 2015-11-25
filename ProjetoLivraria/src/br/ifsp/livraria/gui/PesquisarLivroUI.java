@@ -19,6 +19,7 @@ import br.ifsp.livraria.bd.JDBCDetalhesLivroDao;
 import br.ifsp.livraria.bd.JDBCPesquisaLivroDao;
 import br.ifsp.livraria.bd.PesquisaLivroDao;
 import br.ifsp.livraria.pojo.DetalhesLivro;
+import br.ifsp.livraria.pojo.Livro;
 import br.ifsp.livraria.pojo.PesquisaLivro;
 
 public class PesquisarLivroUI {
@@ -110,6 +111,7 @@ public class PesquisarLivroUI {
 					String titulo = tabela.getValueAt(selecionada, 0).toString();
 					JDBCDetalhesLivroDao detalhesLivroDao = new JDBCDetalhesLivroDao();
 					DetalhesLivro detalhesLivro = detalhesLivroDao.pesquisaDetalhesLivro(titulo);
+					Livro livro = new Livro();
 					DetalhesLivroUI detalhesUI = new DetalhesLivroUI(detalhesLivro);
 				}
 			

@@ -7,6 +7,7 @@ public class DetalhesLivro {
 	private String autorNome;
 	private String nomeEditora;
 	private double preco;
+	private int quantidade;
 	
 	public String getLivroTitulo() {
 		return livroTitulo;
@@ -44,8 +45,11 @@ public class DetalhesLivro {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) { //TODO Deve ser criado uma instância de Livro e setado a qnt no Estoque, adicionando ao array de Livros em Carrinho
+		this.quantidade = quantidade;
+	}
 	
-	
-	
-	//Titulo - Resumo - Sumario - Info autor - Info Editora - preço 
 }
