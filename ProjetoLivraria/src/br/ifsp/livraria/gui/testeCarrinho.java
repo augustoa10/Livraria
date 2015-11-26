@@ -16,12 +16,12 @@ public static void main(String[] args) {
 		
 		Livro l1 = new Livro();
 		l1.setTitulo("Livro 1");
-		l1.setIndice("1");
+		l1.setIsbn(123);
 		l1.setEstoque(10);
 		l1.setPrecoVenda(10.50);
 		
 		Livro l2 = new Livro();
-		l2.setIndice("2");
+		l2.setIsbn(124);
 		l2.setTitulo("Livro 2");
 		l2.setEstoque(15);
 		l2.setPrecoVenda(15.50);

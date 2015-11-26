@@ -3,6 +3,7 @@ package br.ifsp.livraria.gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,8 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SingleSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import br.ifsp.livraria.bd.JDBCCarrinhoDao;
 import br.ifsp.livraria.pojo.Carrinho;
 import br.ifsp.livraria.pojo.Livro;
 
@@ -30,6 +33,7 @@ public class CarrinhoUI extends JFrame {
 	
 	private JButton btExcluir;
 	private JButton btEditar;
+	private JButton btFinalizar;
 	private DefaultTableModel listaCarrinho = new DefaultTableModel()
 	{   
 	    public boolean isCellEditable(int rowIndex, int mColIndex){   
@@ -53,6 +57,7 @@ public class CarrinhoUI extends JFrame {
 		
 		btExcluir = new JButton("Excluir");
 		btEditar = new JButton("Editar");
+		btFinalizar = new JButton("Finalizar Compra");
 		painelBotoes = new JPanel();
 		barraRolagem = new JScrollPane(tabela);
 		painelFundo = new JPanel();
@@ -63,6 +68,7 @@ public class CarrinhoUI extends JFrame {
 		
 		painelBotoes.add(btEditar);
 		painelBotoes.add(btExcluir);
+		painelBotoes.add(btFinalizar);
 		painelFundo.add(BorderLayout.SOUTH, painelBotoes);
 
 		getContentPane().add(painelFundo);
@@ -72,11 +78,12 @@ public class CarrinhoUI extends JFrame {
 
 		btEditar.addActionListener(new BtEditarListener());
 		btExcluir.addActionListener(new BtExcluirListener());
+		btFinalizar.addActionListener(new BtFinalizarListener());
 	}
 
 	private double criaJTable(Carrinho carrinho) {
 		tabela = new JTable(listaCarrinho);
-		listaCarrinho.addColumn("Indice");
+		listaCarrinho.addColumn("ISBN");
 		listaCarrinho.addColumn("Livro");
 		listaCarrinho.addColumn("Qtd");
 		listaCarrinho.addColumn("Preço");
@@ -94,7 +101,7 @@ public class CarrinhoUI extends JFrame {
 		double valorTotal = 0;
 		
 		for (Livro livro : carrinho.getLivros()) {
-			listaCarrinho.addRow(new Object[]{livro.getIndice(), livro.getTitulo(), livro.getEstoque(), livro.getPrecoVenda()});
+			listaCarrinho.addRow(new Object[]{livro.getIsbn(), livro.getTitulo(), livro.getEstoque(), livro.getPrecoVenda()});
 			valorTotal = valorTotal + (livro.getEstoque() * livro.getPrecoVenda());
 		}
 		
@@ -108,7 +115,7 @@ public class CarrinhoUI extends JFrame {
 			linhaSelecionada = tabela.getSelectedRow();
 			if (linhaSelecionada >= 0) {
 				String[] linha = {tabela.getValueAt(linhaSelecionada, 0).toString(),tabela.getValueAt(linhaSelecionada, 1).toString(), tabela.getValueAt(linhaSelecionada, 2).toString(),tabela.getValueAt(linhaSelecionada, 3).toString()};				
-				AtualizarCarrinho update = new AtualizarCarrinho(listaCarrinho, linha, linhaSelecionada);
+				AtualizarCarrinhoUI update = new AtualizarCarrinhoUI(listaCarrinho, linha, linhaSelecionada);
 			} else {
 				JOptionPane.showMessageDialog(null, "É necesário selecionar um livro para alterar a quantidade, tente novamente.");
 			}
@@ -130,6 +137,41 @@ public class CarrinhoUI extends JFrame {
 				listaCarrinho.removeRow(linhaSelecionada);
 			} else {
 				JOptionPane.showMessageDialog(null, "É necesário selecionar um livro para excluir, tente novamente.");
+			}
+		}
+	}
+	
+	private class BtFinalizarListener implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			
+			int linhasTabela = tabela.getRowCount();
+			if (linhasTabela > 0) {
+				
+				ArrayList<Livro> livros = new ArrayList<Livro>();
+				String isbn="",qtd="";
+				for (int linha=0;linha<linhasTabela;linha++){
+					Livro livro = new Livro();
+					isbn = tabela.getModel().getValueAt(linha, 0).toString();
+					qtd = tabela.getModel().getValueAt(linha, 2).toString();
+					
+					livro.setIsbn(Integer.parseInt(isbn));
+					livro.setEstoque(Integer.parseInt(qtd));
+					
+					livros.add(livro);
+					
+				}
+				
+				JDBCCarrinhoDao carrinho = new JDBCCarrinhoDao();
+				
+				carrinho.finalizarCompra(livros);
+				
+				JOptionPane.showMessageDialog(null, "Venda Finalizada com sucesso! Obrigado e Volte sempre :)");
+				
+				dispose();
+				
+			} else {
+				JOptionPane.showMessageDialog(null, "É necesário ao menos um livro no carrinho para finalizar a compra, adicione alguns livros ao carrinho e tente novamente.");
 			}
 		}
 	}
