@@ -212,13 +212,15 @@ public class CadastrarLivroUI {
 		
 		//Categoria Checkbox
 		
-		ActionListener actionListener = new ActionCheckBoxes();
+		/*ActionListener actionListener = new ActionCheckBoxes();
+		// Código comentado pois tratei os checkbox de outra maneira 
+		 * 
+		 * Victor
+		 * 
 		checkBoxAcademico.addActionListener(actionListener);
 		checkBoxOutros.addActionListener(actionListener);
 		checkBoxQuadrinhos.addActionListener(actionListener);
-		checkBoxRomance.addActionListener(actionListener);
-		
-		
+		checkBoxRomance.addActionListener(actionListener);*/
 		
 		// Salvar
 		btnSalvar.addActionListener(new ActionListener() {
@@ -246,36 +248,74 @@ public class CadastrarLivroUI {
 					}
 
 					else {
-						System.out.println("");
-
-						livro.setIsbn(Integer.parseInt(txtISBN.getText()));
-						livro.setTitulo(txtTit.getText());
-						livro.setDataPublicacao(txtDataPublica.getText());
-						
-						/*int index = comboEditora.getSelectedIndex();
-						Editora editora = (Editora) array.get(index);
-						livro.setIdEditora(editora.getIdEditora());*/
-						
-						livro.setCategoria(ActionCheckBoxes.getStringBuilder().toString());
-						livro.setPrecoVenda(Double.parseDouble(txtPrecoVenda.getText()));
-						livro.setResumo(txtResumo.getText());
-						livro.setIndice(txtIndice.getText());
-						
-						/*int index2 = comboAutor.getSelectedIndex();
-						Autor autor = (Autor) array2.get(index2);
-						livro.setIdAutor(autor.getIdAutor());*/
-						
-						livro.setIdEditora(comboEditora.getSelectedIndex()+1);
-						livro.setIdAutor(comboAutor.getSelectedIndex()+1);
-						
-						livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
-						livro.setMargemLucro(Double.parseDouble(txtMargemDeLucro.getText()));
-						livro.setEstoque(Integer.parseInt(txtEstoque.getText()));
-
-						livroDao.cadastrarLivro(livro);
-						
-						JOptionPane.showMessageDialog(null,"Livro cadastrado com sucesso!");
-						telaCadastroLivro.dispose();
+						if(checkBoxAcademico.isSelected() == false 
+								&& checkBoxOutros.isSelected() == false 
+								&& checkBoxQuadrinhos.isSelected() == false 
+								&& checkBoxRomance.isSelected() == false){
+							JOptionPane.showMessageDialog(null,  "Você não selecionou nenhuma categoria!");
+						}
+						else {
+							
+							// Variável que guarda resultado do método que testa
+							// se já possui o ISBN cadastrado no banco
+							// Se o método retorna true, é porque encontrou o ISBN no banco
+							// senão, o cadastro do livro é feito.
+							
+							boolean encontrada=testaLivros(Integer.parseInt(txtISBN.getText()));
+							if(encontrada){
+								JOptionPane.showMessageDialog(null, "ISBN Já cadastrado. Por favor insira outro ISBN.");
+								txtISBN.setText("");
+								txtISBN.requestFocus();
+							} else{
+								System.out.println("");
+		
+								livro.setIsbn(Integer.parseInt(txtISBN.getText()));
+								livro.setTitulo(txtTit.getText());
+								livro.setDataPublicacao(txtDataPublica.getText());
+								
+								/*int index = comboEditora.getSelectedIndex();
+								Editora editora = (Editora) array.get(index);
+								livro.setIdEditora(editora.getIdEditora());*/
+								
+								String categoriaJunto="";
+								if(checkBoxAcademico.isSelected()){
+									categoriaJunto = categoriaJunto + "Acadêmico - ";
+								}
+								
+								if(checkBoxOutros.isSelected()){
+									categoriaJunto = categoriaJunto + "Outros - ";
+								}
+								
+								if(checkBoxQuadrinhos.isSelected()){
+									categoriaJunto = categoriaJunto + "Quadrinhos - ";
+								}
+								
+								if(checkBoxRomance.isSelected()){
+									categoriaJunto = categoriaJunto + "Romance - ";
+								}
+								
+								livro.setCategoria(categoriaJunto);
+								livro.setPrecoVenda(Double.parseDouble(txtPrecoVenda.getText()));
+								livro.setResumo(txtResumo.getText());
+								livro.setIndice(txtIndice.getText());
+								
+								/*int index2 = comboAutor.getSelectedIndex();
+								Autor autor = (Autor) array2.get(index2);
+								livro.setIdAutor(autor.getIdAutor());*/
+								
+								livro.setIdEditora(comboEditora.getSelectedIndex()+1);
+								livro.setIdAutor(comboAutor.getSelectedIndex()+1);
+								
+								livro.setPrecoCusto(Double.parseDouble(txtPrecoCusto.getText()));
+								livro.setMargemLucro(Double.parseDouble(txtMargemDeLucro.getText()));
+								livro.setEstoque(Integer.parseInt(txtEstoque.getText()));
+		
+								livroDao.cadastrarLivro(livro);
+								
+								JOptionPane.showMessageDialog(null,"Livro cadastrado com sucesso!");
+								telaCadastroLivro.dispose();
+							}
+						}
 					}
 				} catch (HeadlessException e) {
 					JOptionPane.showMessageDialog(null,"Dados Inválidos. Não foi possível cadastrar o Livro!");
@@ -355,6 +395,26 @@ public class CadastrarLivroUI {
 		telaCadastroLivro.add(painelCadLivro);
 		painelCadLivro.setVisible(true);
 		telaCadastroLivro.setVisible(true);
+	}
+	
+	// Método para verificar se possui o ISBN cadastrado no banco
+	public boolean testaLivros(int isbn){
+		
+		boolean livroEncontrado=false;
+		
+		//Instancia de livroDao para acessar método que retorna os ISBNs e títulos do banco
+		LivroDao livros = new JDBCLivroDao();
+		ArrayList<Livro> livrosBanco = new ArrayList<Livro>();
+		livrosBanco = livros.obterLivro();
+		
+		//percorre o arraylist carregado e procura o ISBN
+		// caso encontre muda a variável boolean pra true
+		for(int i=0; i<livrosBanco.size();i++){
+			if(livrosBanco.get(i).getIsbn() == isbn){
+				livroEncontrado = true;
+			}
+		}
+		return livroEncontrado;		
 	}
 }
 

@@ -2,6 +2,9 @@ package br.ifsp.livraria.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.ifsp.livraria.pojo.Livro;
 
@@ -37,6 +40,35 @@ public class JDBCLivroDao implements LivroDao {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	//Método para obter isbns e titulos do banco
+	public ArrayList<Livro> obterLivro() {
+		try{
+			Connection conexao = ConnectionFactory.createConnection();
+			
+			String sql = "select * from livro";
+			
+			PreparedStatement comando = conexao.prepareStatement(sql);
+			
+			ResultSet resultado = comando.executeQuery();
+			
+			ArrayList<Livro> listaLivro = new ArrayList<Livro>();
+						
+			while(resultado.next()){
+				Livro livro = new Livro();
+				livro.setIsbn(resultado.getInt("isbn"));
+				livro.setTitulo(resultado.getString("titulo"));		
+				listaLivro.add(livro);	
+			}
+			conexao.close();
+			return listaLivro;
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
