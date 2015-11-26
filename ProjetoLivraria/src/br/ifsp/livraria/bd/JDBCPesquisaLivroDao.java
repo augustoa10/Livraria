@@ -20,8 +20,8 @@ public class JDBCPesquisaLivroDao implements PesquisaLivroDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a using (idAutor) where l.titulo = ?");			
-			stmt.setString(1, titulo);
+			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a using (idAutor) where l.titulo like ?");			
+			stmt.setString(1, "%" + titulo+ "%");
 			rs = stmt.executeQuery();
 		
 		ArrayList<PesquisaLivro> fichaLivro = new ArrayList<PesquisaLivro>();
@@ -60,8 +60,8 @@ public class JDBCPesquisaLivroDao implements PesquisaLivroDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a using ( idAutor ) where a.nome = ?");			
-			stmt.setString(1, autor);
+			stmt = conexao.prepareStatement("select l.titulo, a.nome, l.precoVenda from livro l inner join autor a using ( idAutor ) where a.nome like ?");			
+			stmt.setString(1, "%"+autor+"%");
 			rs = stmt.executeQuery();
 		
 		ArrayList<PesquisaLivro> fichaLivro = new ArrayList<PesquisaLivro>();
