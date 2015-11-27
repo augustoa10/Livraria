@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -25,10 +26,13 @@ import br.ifsp.livraria.pojo.Livro;
 //TODO INSTALL Windows Builder -- 
 //Install new oftware = url: http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/4.4/
 public class DetalhesLivroUI{
-	
+
 	public DetalhesLivroUI(DetalhesLivro detalhesLivro) {
+
 		//Criando o Frame para detalhes de um livro
 		final JFrame frameDetalhesLivro = new JFrame("Detalhes do Livro");
+			
+		JOptionPane.setRootFrame(frameDetalhesLivro);
 		
 		Container container = frameDetalhesLivro.getContentPane(); 
 		container.setPreferredSize(new Dimension(550, 540));		
@@ -130,12 +134,9 @@ public class DetalhesLivroUI{
 					livro.setEstoque(Integer.parseInt(spinnerModel.getValue().toString()));
 					
 					//Adiciona ao array Carrinho
-					Carrinho carrinho = new Carrinho();
-					carrinho.getLivros().add(livro);
-					
-					//Teste 
-					
-					
+					Carrinho.carro.getLivros().add(livro);
+					JOptionPane.showMessageDialog(null,"Livro cadastrado com sucesso!");
+					frameDetalhesLivro.dispose();
 				}
 				
 				
