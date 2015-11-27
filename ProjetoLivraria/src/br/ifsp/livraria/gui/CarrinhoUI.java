@@ -34,6 +34,7 @@ public class CarrinhoUI extends JFrame {
 	private JButton btExcluir;
 	private JButton btEditar;
 	private JButton btFinalizar;
+	
 	private DefaultTableModel listaCarrinho = new DefaultTableModel()
 	{   
 	    public boolean isCellEditable(int rowIndex, int mColIndex){   
@@ -72,7 +73,6 @@ public class CarrinhoUI extends JFrame {
 		painelFundo.add(BorderLayout.SOUTH, painelBotoes);
 
 		getContentPane().add(painelFundo);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(600, 320);
 		setVisible(true);
 
@@ -160,8 +160,10 @@ public class CarrinhoUI extends JFrame {
 					
 					livros.add(livro);
 					
+					
 				}
 				
+				Carrinho.carro = new Carrinho();
 				JDBCCarrinhoDao carrinho = new JDBCCarrinhoDao();
 				
 				carrinho.finalizarCompra(livros);

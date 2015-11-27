@@ -113,6 +113,7 @@ public class PesquisarLivroUI {
 					DetalhesLivro detalhesLivro = detalhesLivroDao.pesquisaDetalhesLivro(titulo);
 					Livro livro = new Livro();
 					DetalhesLivroUI detalhesUI = new DetalhesLivroUI(detalhesLivro);
+					framePesquisaLivro.dispose();
 				}
 			
 			}

@@ -3,6 +3,8 @@ package br.ifsp.livraria.pojo;
 import java.util.ArrayList;
 
 public class Carrinho {
+	public static Carrinho carro = new Carrinho();
+	
 
 	private Cliente cliente;
 	private int qtdeTotal;

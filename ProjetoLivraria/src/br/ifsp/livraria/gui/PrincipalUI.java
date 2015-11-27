@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 
+import br.ifsp.livraria.pojo.Carrinho;
 import br.ifsp.livraria.pojo.Cliente;
 
 public class PrincipalUI {
@@ -123,7 +124,7 @@ public class PrincipalUI {
 		JMenuItem menuVerCarrinho = new JMenuItem("Visualizar Carrinho");
 		menuVerCarrinho.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {		
-				//new VisualizarCarrinhoUI();		
+				new CarrinhoUI(Carrinho.carro);		
 			}	
 		});
 		menuCompra.add(menuVerCarrinho);
